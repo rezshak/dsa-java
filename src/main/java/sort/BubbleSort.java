@@ -12,17 +12,17 @@ final class BubbleSort {
     void bubbleSort(int[] A) {
 
         boolean sorted = false;
-        int lastSortedIndex = 0;
+        int lastSortedIndex = A.length - 1;
 
         while (!sorted) {
             sorted = true;
-            for (int i = 0; i < A.length - 1 - lastSortedIndex; i++) {
-                if (A[i] > A[i + 1]) {
+            for (int i = 0; i < lastSortedIndex; i++) {
+                if (A[i] > A[i+1]) {
                     swap(A, i);
-                    sorted = false;
                 }
+                sorted = false;
             }
-            lastSortedIndex++;
+            lastSortedIndex--;
         }
     }
 
