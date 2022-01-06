@@ -10,15 +10,13 @@ final class BubbleSort {
     static final int[] ARR3 = {23, 7, 29, 79, 12, 41, 57, 72, 45, 82, 51, 10, 40, 85, 72, 13, 50, 90, 100, 6, 39, 100};
 
     void bubbleSort(int[] A) {
-
-        boolean sorted = false;
         int lastSortedIndex = A.length - 1;
-
+        boolean sorted = false;
         while (!sorted) {
             sorted = true;
             for (int i = 0; i < lastSortedIndex; i++) {
-                if (A[i] > A[i+1]) {
-                    swap(A, i);
+                if (A[i] > A[i + 1]) {
+                    swap(A, i, i + 1);
                 }
                 sorted = false;
             }
@@ -32,10 +30,11 @@ final class BubbleSort {
         System.out.println(Arrays.toString(ARR2));
     }
 
-    private static void swap(int[] A, int i) {
+    static void swap(int[] A, int i, int j) {
+        if (i == j) return;
         int temp = A[i];
-        A[i] = A[i + 1];
-        A[i + 1] = temp;
+        A[i] = A[j];
+        A[j] = temp;
     }
 
 }
