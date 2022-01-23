@@ -29,15 +29,11 @@ final class Quicksort {
         for (int j = left; j < right; j++) {
             if (A[j] <= pivot) {
                 i++;
-                int temp = A[i];
-                A[i] = A[j];
-                A[j] = temp;
+                swap(A, i, j);
             }
         }
 
-        int temp = A[i + 1];
-        A[i + 1] = A[right];
-        A[right] = temp;
+        swap(A, i + 1, right);
 
         return (i + 1);
     }
