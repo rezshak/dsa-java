@@ -16,8 +16,8 @@ final class Quicksort {
             return;
         }
 
-        int pivot = lomutoPartition(A, left, right);
-        quicksort(A, left, pivot - 1);
+        int pivot = hoarePartition(A, left, right);
+        quicksort(A, left, pivot);
         quicksort(A, pivot + 1, right);
     }
 
@@ -42,8 +42,7 @@ final class Quicksort {
 
         int mid = (right + left) / 2;
         int pivot = A[mid];
-        int i = left - 1;
-        int j = right + 1;
+        int i = left - 1, j = right + 1;
 
         while (true) {
 
@@ -55,18 +54,18 @@ final class Quicksort {
                 j--;
             } while (A[j] > pivot);
 
-            if (i >= j) {
+            if (i < j) {
+                swap(A, i, j);
+            } else {
                 return j;
             }
-
-            swap(A, i, j);
         }
     }
 
     public static void main(String... args) {
         Quicksort qs = new Quicksort();
-        qs.quicksort(ARR1, 0, ARR1.length - 1);
-        System.out.println(Arrays.toString(ARR1));
+        qs.quicksort(ARR2, 0, ARR2.length - 1);
+        System.out.println(Arrays.toString(ARR2));
     }
 
     private static void swap(int[] A, int i, int j) {
