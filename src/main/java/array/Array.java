@@ -1,24 +1,25 @@
 package array;
 
-public class Array {
+final class Array {
 
     int[] arr;
     int size;
-    int ptr = 0;
+    int count; // Write ptr
 
     Array(int size) {
         this.size = size;
         arr = new int[size];
+        count = 0;
     }
 
     void insert(int n) {
-        if (ptr == size) {
+        if (count == size) {
             int[] arr2 = new int[size * 2];
             for (int i = 0; i < size; i++) arr2[i] = arr[i];
             arr = arr2;
             size *= 2;
         }
-        arr[ptr++] = n;
+        arr[count++] = n;
     }
 
     void removeAt(int index) {
@@ -50,7 +51,7 @@ public class Array {
     void print() {
         System.out.print("[ ");
         for (int i = 0; i < size; i++) {
-            System.out.print( arr[i] + (i == size - 1 ? "" : ", "));
+            System.out.print(arr[i] + (i == size - 1 ? "" : ", "));
         }
         System.out.println(" ]");
     }
