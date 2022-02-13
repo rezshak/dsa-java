@@ -23,18 +23,11 @@ final class DynamicArray {
     }
 
     void removeAt(int index) {
-        if (index > length) return;
-        int[] arr2 = new int[length - 1];
-        int idx = 0, idx2 = 0;
-        while (idx2 < length - 1 && idx < length) {
-            if (idx == index) {
-                idx++;
-                continue;
-            }
-            arr2[idx2++] = arr[idx++];
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException("Index invalid");
         }
-        length -= 1;
-        arr = arr2;
+        for (int i = index; i < count - 1; i++) arr[i] = arr[i + 1];
+        count--;
     }
 
     int getLength() {
@@ -50,21 +43,23 @@ final class DynamicArray {
 
     void print() {
         System.out.print("[ ");
-        for (int i = 0; i < length; i++) {
-            System.out.print(arr[i] + (i == length - 1 ? "" : ", "));
+        for (int i = 0; i < count; i++) {
+            System.out.print(arr[i] + (i == count - 1 ? "" : ", "));
         }
         System.out.println(" ]");
     }
 
     public static void main(String[] args) {
-        DynamicArray arr = new DynamicArray(3);
-        System.out.println("size: " + arr.getLength());
+        DynamicArray arr = new DynamicArray(4);
+        System.out.println("Length: " + arr.getLength());
         arr.insert(20);
         arr.insert(30);
         arr.insert(40);
         arr.print();
         arr.insert(50);
-        System.out.println("size: " + arr.getLength());
+        arr.insert(60);
+        arr.print();
+        System.out.println("Length: " + arr.getLength());
         arr.removeAt(2);
         arr.print();
         System.out.println(arr.indexOf(50));
