@@ -1,48 +1,48 @@
 package array;
 
-final class Array {
+final class DynamicArray {
 
     int[] arr;
-    int size;
+    int length;
     int count; // Write ptr
 
-    Array(int size) {
-        this.size = size;
-        arr = new int[size];
+    DynamicArray(int length) {
+        this.length = length;
+        arr = new int[length];
         count = 0;
     }
 
     void insert(int n) {
-        if (count == size) {
-            int[] arr2 = new int[size * 2];
-            for (int i = 0; i < size; i++) arr2[i] = arr[i];
+        if (count == length) {
+            int[] arr2 = new int[length * 2];
+            for (int i = 0; i < length; i++) arr2[i] = arr[i];
             arr = arr2;
-            size *= 2;
+            length *= 2;
         }
         arr[count++] = n;
     }
 
     void removeAt(int index) {
-        if (index > size) return;
-        int[] arr2 = new int[size - 1];
+        if (index > length) return;
+        int[] arr2 = new int[length - 1];
         int idx = 0, idx2 = 0;
-        while (idx2 < size - 1 && idx < size) {
+        while (idx2 < length - 1 && idx < length) {
             if (idx == index) {
                 idx++;
                 continue;
             }
             arr2[idx2++] = arr[idx++];
         }
-        size -= 1;
+        length -= 1;
         arr = arr2;
     }
 
-    int getSize() {
-        return size;
+    int getLength() {
+        return length;
     }
 
     int indexOf(int n) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < length; i++) {
             if (arr[i] == n) return i;
         }
         return -1;
@@ -50,21 +50,21 @@ final class Array {
 
     void print() {
         System.out.print("[ ");
-        for (int i = 0; i < size; i++) {
-            System.out.print(arr[i] + (i == size - 1 ? "" : ", "));
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i] + (i == length - 1 ? "" : ", "));
         }
         System.out.println(" ]");
     }
 
     public static void main(String[] args) {
-        Array arr = new Array(3);
-        System.out.println("size: " + arr.getSize());
+        DynamicArray arr = new DynamicArray(3);
+        System.out.println("size: " + arr.getLength());
         arr.insert(20);
         arr.insert(30);
         arr.insert(40);
         arr.print();
         arr.insert(50);
-        System.out.println("size: " + arr.getSize());
+        System.out.println("size: " + arr.getLength());
         arr.removeAt(2);
         arr.print();
         System.out.println(arr.indexOf(50));
