@@ -2,41 +2,34 @@ package array;
 
 final class DynamicArray {
 
-    int[] arr;
-    int length;
+    int[] items;
     int count; // Write ptr
 
     DynamicArray(int length) {
-        this.length = length;
-        arr = new int[length];
+        items = new int[length];
         count = 0;
     }
 
     void insert(int n) {
-        if (count == length) {
-            int[] arr2 = new int[length * 2];
-            for (int i = 0; i < length; i++) arr2[i] = arr[i];
-            arr = arr2;
-            length *= 2;
-        }
-        arr[count++] = n;
+        items[count++] = n;
     }
 
     void removeAt(int index) {
         if (index < 0 || index >= count) {
             throw new IllegalArgumentException("Index invalid");
         }
-        for (int i = index; i < count - 1; i++) arr[i] = arr[i + 1];
+        resizeIfRequired();
+        for (int i = index; i < count; i++) items[i] = items[i + 1];
         count--;
     }
 
     int getLength() {
-        return length;
+        return items.length;
     }
 
     int indexOf(int n) {
-        for (int i = 0; i < length; i++) {
-            if (arr[i] == n) return i;
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == n) return i;
         }
         return -1;
     }
@@ -44,7 +37,7 @@ final class DynamicArray {
     void print() {
         System.out.print("[ ");
         for (int i = 0; i < count; i++) {
-            System.out.print(arr[i] + (i == count - 1 ? "" : ", "));
+            System.out.print(items[i] + (i == count - 1 ? "" : ", "));
         }
         System.out.println(" ]");
     }
@@ -52,9 +45,11 @@ final class DynamicArray {
     public static void main(String[] args) {
         DynamicArray arr = new DynamicArray(4);
         System.out.println("Length: " + arr.getLength());
+        arr.insert(10);
         arr.insert(20);
         arr.insert(30);
         arr.insert(40);
+        arr.removeAt(0);
         arr.print();
         arr.insert(50);
         arr.insert(60);
@@ -64,6 +59,14 @@ final class DynamicArray {
         arr.print();
         System.out.println(arr.indexOf(50));
         System.out.println(arr.indexOf(20));
+    }
+
+    void resizeIfRequired() {
+        if (count == items.length) {
+            int[] items2 = new int[count * 2];
+            for (int i = 0; i < count; i++) items2[i] = items[i];
+            items = items2;
+        }
     }
 
 }
