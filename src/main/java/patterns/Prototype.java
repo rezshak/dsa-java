@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 enum ShapeType {
-    RECTANGLE("Rectange"), SQUARE("Square"), CIRCLE("Cricle");
+    RECTANGLE("Rectangle"), SQUARE("Square"), CIRCLE("Circle");
     final String name;
     ShapeType(String name) { this.name = name; }
 }
@@ -70,11 +70,11 @@ class ShapeCache {
 class Prototype {
     public static void main(String[] args) {
         ShapeCache.loadCache();
-        Shape clonedShape1 = (Shape) ShapeCache.getShapeById(100);
+        Shape clonedShape1 = ShapeCache.getShapeById(100);
         clonedShape1.draw();
-        Shape clonedShape2 = (Shape) ShapeCache.getShapeById(300);
+        Shape clonedShape2 = ShapeCache.getShapeById(300);
         clonedShape2.draw();
-        Shape clonedShape3 = (Shape) ShapeCache.getShapeById(500);
+        Shape clonedShape3 = ShapeCache.getShapeById(500);
         clonedShape3.draw();
     }
 }
