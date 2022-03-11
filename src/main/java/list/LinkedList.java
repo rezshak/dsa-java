@@ -143,6 +143,29 @@ class LinkedList {
         return curr.value;
     }
 
+    void printMiddle() {
+        if (isEmpty()) throw new NoSuchElementException();
+        System.out.println("Head: " + head + " : " + head.value);
+        Node a = head, b = head;
+        while (a != tail && b.next != tail) {
+            b = b.next.next;
+            a = a.next;
+
+        }
+        if (b == tail) System.out.println("Middle: " + a.value);
+        else System.out.println("Middle: " + a.value + ", " + a.next.value);
+    }
+
+    boolean hasLoop() {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+
     private boolean isEmpty() { return head == null; }
 
     private boolean hasOneNode() { return head == tail; }
