@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Stack st = new Stack(3);
         st.push(8);
+        System.out.println(st.min());
         System.out.println(st.peek());
         st.push(5);
         st.push(1);
@@ -16,5 +17,7 @@ public class Main {
         st.printStack();
 
         System.out.println(st);
+
+        System.out.println(st.min());
     }
 }

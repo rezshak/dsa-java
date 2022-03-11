@@ -7,6 +7,7 @@ public class Stack {
 
     private int[] arr;
     private int ptr;
+    private int min;
 
     Stack() {
         this(10);
@@ -15,10 +16,12 @@ public class Stack {
     Stack(int size) {
         arr = new int[size];
         ptr = 0;
+        min = Integer.MAX_VALUE;
     }
 
     void push(int n) {
         resizeIfNeeded();
+        setMin(n);
         arr[ptr++] = n;
     }
 
@@ -60,6 +63,13 @@ public class Stack {
             System.arraycopy(arr, 0, arr2, 0, arr.length);
             arr = arr2;
         }
+    }
+
+    int min() { return min; }
+
+    private void setMin(int n) {
+        if (ptr == 0) min = n;
+        else min = Math.min(min, n);
     }
 
 }
