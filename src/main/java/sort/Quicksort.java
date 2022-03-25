@@ -11,54 +11,37 @@ final class Quicksort {
     static final int[] ARR4 = {36, 72, 98, 98, 9, 60, 18, 60, 62, 74, 45, 62, 15, 55, 53, 100, 15, 21, 71, 48, 21, 43};
 
     void quicksort(int[] A, int left, int right) {
-
-        if (left < 0 || left >= right) {
-            return;
-        }
-
-        int pivot = hoarePartition(A, left, right);
-        quicksort(A, left, pivot);
+        if (left >= right) return;
+        int pivot = lomutoPartition(A, left, right);
+        quicksort(A, left, pivot - 1);
         quicksort(A, pivot + 1, right);
     }
 
     int lomutoPartition(int[] A, int left, int right) {
-
         int pivot = A[right];
-        int i = left - 1;
-
-        for (int j = left; j < right; j++) {
-            if (A[j] <= pivot) {
-                i++;
-                swap(A, i, j);
+        int boundary = left - 1;
+        for (int i = left; i <= right; i++) {
+            if (A[i] <= pivot) {
+                boundary++;
+                swap(A, i, boundary);
             }
         }
-
-        swap(A, i + 1, right);
-
-        return i + 1;
+        return boundary;
     }
 
     int hoarePartition(int[] A, int left, int right) {
-
-        int mid = (right + left) / 2;
+        int mid = left + (right - left) / 2;
         int pivot = A[mid];
         int i = left - 1, j = right + 1;
-
         while (true) {
-
             do {
                 i++;
             } while (A[i] < pivot);
-
             do {
                 j--;
             } while (A[j] > pivot);
-
-            if (i < j) {
-                swap(A, i, j);
-            } else {
-                return j;
-            }
+            if (i < j) swap(A, i, j);
+            else return j;
         }
     }
 
