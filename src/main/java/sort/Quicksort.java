@@ -12,12 +12,12 @@ final class Quicksort {
 
     void quicksort(int[] A, int left, int right) {
         if (left >= right) return;
-        int pivot = lomutoPartition(A, left, right);
+        int pivot = partition(A, left, right);
         quicksort(A, left, pivot - 1);
         quicksort(A, pivot + 1, right);
     }
 
-    int lomutoPartition(int[] A, int left, int right) {
+    int partition(int[] A, int left, int right) {
         int pivot = A[right];
         int boundary = left - 1;
         for (int i = left; i <= right; i++) {
