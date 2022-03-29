@@ -26,15 +26,14 @@ final class HeapSort {
     void heapify(int[] A, int len, int i) {
 
         // Find largest among root, left child and right child
+        int largest = i;
+        int left = (2 * i) + 1;
+        int right = (2 * i) + 2;
 
-        int largest = i; // Initialize largest as root
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-
-        // If left child is larger than root
+        // If left child is larger than root, bubble it up
         if (left < len && A[left] > A[largest]) largest = left;
         
-        // If right child is larger than largest so far
+        // If right child is larger than largest so far, bubble it up
         if (right < len && A[right] > A[largest]) largest = right;
 
         // Swap and continue heapifying if root is not largest
