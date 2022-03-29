@@ -20,9 +20,9 @@ final class HeapSort {
         }
     }
 
-    // Parent (p) of i: (i - 1) / 2
-    // Left child of i: 2 * p + 1
-    // Right child of i: 2 * p + 2
+    // Parent (p) of element i: (i - 1) / 2
+    // Left child of i: (2 * p) + 1
+    // Right child of i: (2 * p) + 2
     void heapify(int[] A, int len, int i) {
 
         // Find largest among root, left child and right child
