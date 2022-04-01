@@ -26,7 +26,7 @@ final class JumpSearch {
 
         final int[] arr1 = {1, 3, 7, 8, 9};
 
-        System.out.println("-- Jump Search");
+        System.out.println("-- Jump BinarySearch");
         System.out.println(js.jumpSearch(arr1, 1));
         System.out.println(js.jumpSearch(arr1, 9));
         System.out.println(js.jumpSearch(arr1, 99));
