@@ -30,7 +30,7 @@ final class Search {
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (A[mid] == target) return mid;
-            else if (A[mid] > target) right = mid - 1;
+            if (A[mid] > target) right = mid - 1;
             else left = mid + 1;
         }
         return -1;
