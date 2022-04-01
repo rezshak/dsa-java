@@ -30,6 +30,7 @@ final class JumpSearch {
         System.out.println(js.jumpSearch(arr1, 1));
         System.out.println(js.jumpSearch(arr1, 9));
         System.out.println(js.jumpSearch(arr1, 99));
+        System.out.println(js.jumpSearch(arr1, 2));
 
     }
 
