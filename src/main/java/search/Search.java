@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 final class Search {
 
-    final static int[] ARR1 = {6, 43, 48, 18, 62, 29, 26, 3, 22, 13, 17, 56, 90};
+    final static int[] ARR1 = {1, 3, 7, 8, 9};
 
     int linearSearch(int[] A, int target) {
         for (int i = 0; i < A.length; i++) {
@@ -38,16 +38,21 @@ final class Search {
 
     public static void main(String[] args) {
         Search search = new Search();
-        System.out.println(search.linearSearch(ARR1, 90));
-        System.out.println(search.linearSearch(ARR1, 91));
 
-        Arrays.sort(ARR1);
-        System.out.println(search.binarySearch(ARR1, 90));
-        System.out.println(search.binarySearch(ARR1, 91));
+        System.out.println("-- Linear Search");
+        System.out.println(search.linearSearch(ARR1, 1));
+        System.out.println(search.linearSearch(ARR1, 9));
+        System.out.println(search.linearSearch(ARR1, 99));
 
-        Arrays.sort(ARR1);
-        System.out.println(search.binarySearchIterative(ARR1, 90));
-        System.out.println(search.binarySearchIterative(ARR1, 91));
+        System.out.println("-- Binary Search Recursive");
+        System.out.println(search.binarySearch(ARR1, 1));
+        System.out.println(search.binarySearch(ARR1, 9));
+        System.out.println(search.binarySearch(ARR1, 99));
+
+        System.out.println("-- Binary Search Iterative");
+        System.out.println(search.binarySearchIterative(ARR1, 1));
+        System.out.println(search.binarySearchIterative(ARR1, 9));
+        System.out.println(search.binarySearchIterative(ARR1, 99));
     }
 
 }
