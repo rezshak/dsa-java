@@ -14,7 +14,6 @@ final class Search {
     }
 
     int binarySearch(int[] A, int target) {
-        Arrays.sort(A);
         return binarySearch(A, 0, A.length - 1, target);
     }
 
@@ -22,12 +21,11 @@ final class Search {
         if (left > right) return -1;
         int mid = left + (right - left) / 2;
         if (A[mid] == target) return mid;
-        else if (A[mid] > target) return binarySearch(A, left, mid - 1, target);
-        else return binarySearch(A, mid + 1, right, target);
+        if (A[mid] > target) return binarySearch(A, left, mid - 1, target);
+        return binarySearch(A, mid + 1, right, target);
     }
 
     int binarySearchIterative(int[] A, int target) {
-        Arrays.sort(A);
         int left = 0, right = A.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -43,12 +41,13 @@ final class Search {
         System.out.println(search.linearSearch(ARR1, 90));
         System.out.println(search.linearSearch(ARR1, 91));
 
+        Arrays.sort(ARR1);
         System.out.println(search.binarySearch(ARR1, 90));
         System.out.println(search.binarySearch(ARR1, 91));
 
+        Arrays.sort(ARR1);
         System.out.println(search.binarySearchIterative(ARR1, 90));
         System.out.println(search.binarySearchIterative(ARR1, 91));
-
     }
 
 }
