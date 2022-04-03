@@ -24,26 +24,26 @@ final class BinaryTree {
     // nlr
     void preorder(Node node) {
         if (node == null) return;
-        System.out.println(node);
-        preorder(node.left); // Traverse left
-        preorder(node.right); // Traverse right
+        work(node);
+        preorder(node.left);
+        preorder(node.right);
     }
 
     // lnr
     void inorder(Node node) {
         if (node == null) return;
-        inorder(node.left); // Traverse left
-        System.out.println(node); // Traverse root
-        inorder(node.right); // Traverse right
+        inorder(node.left);
+        work(node);
+        inorder(node.right);
 
     }
 
     // lrn
     void postorder(Node node) {
         if (node == null) return;
-        postorder(node.left); // Traverse left
-        postorder(node.right); // Traverse right
-        System.out.println(node); // Traverse root
+        postorder(node.left);
+        postorder(node.right);
+        work(node);
     }
 
     public static void main(String[] args) {
@@ -53,7 +53,7 @@ final class BinaryTree {
         tree.root.right = new Node(9);
         tree.root.left.left = new Node(5);
 
-        System.out.println("Inorder traversal");
+        System.out.println("\nInorder traversal");
         tree.inorder(tree.root);
 
         System.out.println("\nPreorder traversal");
@@ -61,6 +61,10 @@ final class BinaryTree {
 
         System.out.println("\nPostorder traversal");
         tree.postorder(tree.root);
+    }
+
+    private static void work(Node node) {
+        System.out.println(node);
     }
 
 }
