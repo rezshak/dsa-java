@@ -35,10 +35,11 @@ final class RadixSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 121, 432, 564, 23, 1, 45, 788 };
+        int[] arr1 = { 121, 432, 564, 23, 1, 45, 788 };
+        int[] arr2 = { 18, 6, 12, 4, 5, 11, 21 };
         RadixSort rs = new RadixSort();
-        rs.radixSort(arr);
-        System.out.println(Arrays.toString(arr));
+        rs.radixSort(arr2);
+        System.out.println(Arrays.toString(arr2));
     }
 
 
