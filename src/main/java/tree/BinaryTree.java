@@ -5,12 +5,10 @@ final class BinaryTree {
     static class Node {
         int item;
         Node left, right;
-
         Node(int item) {
             this.item = item;
             left = right = null;
         }
-
         @Override
         public String toString() {
             return "Node: " + item;
