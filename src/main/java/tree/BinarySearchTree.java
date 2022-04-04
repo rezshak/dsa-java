@@ -70,7 +70,5 @@ final class BinarySearchTree {
         bst.insert(11);
 
         System.out.println(bst.root);
-
-        System.out.println(Runtime.version());
     }
 }

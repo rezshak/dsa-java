@@ -49,7 +49,7 @@ public class Stack {
     @Override
     public String toString() {
         checkIfEmpty();
-        var content = Arrays.copyOf(arr, ptr);
+        int[] content = Arrays.copyOf(arr, ptr);
         return Arrays.toString(content);
     }
 
@@ -59,7 +59,7 @@ public class Stack {
 
     private void resizeIfNeeded() {
         if (ptr == arr.length) {
-            var arr2 = new int[arr.length * 2];
+            int[] arr2 = new int[arr.length * 2];
             System.arraycopy(arr, 0, arr2, 0, arr.length);
             arr = arr2;
         }
