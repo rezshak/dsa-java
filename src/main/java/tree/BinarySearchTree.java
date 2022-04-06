@@ -22,18 +22,18 @@ final class BinarySearchTree {
     }
 
     void insert(int value) {
-        root = insertValue(root, value);
+        root = insertHelper(root, value);
     }
 
-    Node insertValue(Node node, int value) {
+    Node insertHelper(Node node, int value) {
         if (node == null) {
             node = new Node(value);
             return node;
         }
         if (value < node.value) {
-            node.left = insertValue(node.left, value);
+            node.left = insertHelper(node.left, value);
         } else if (value > node.value) {
-            node.right = insertValue(node.right, value);
+            node.right = insertHelper(node.right, value);
         }
         return node;
     }
