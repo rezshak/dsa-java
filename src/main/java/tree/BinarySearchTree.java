@@ -3,15 +3,15 @@ package tree;
 final class BinarySearchTree {
 
     static class Node {
-        int key;
+        int value;
         Node left, right;
-        Node(int key) {
-            this.key = key;
+        Node(int value) {
+            this.value = value;
             left = right = null;
         }
         @Override
         public String toString() {
-            return "Node: " + key;
+            return "Node: " + value;
         }
     }
 
@@ -21,32 +21,32 @@ final class BinarySearchTree {
         root = null;
     }
 
-    void insert(int key) {
-        root = insertKey(root, key);
+    void insert(int value) {
+        root = insertValue(root, value);
     }
 
-    Node insertKey(Node node, int key) {
+    Node insertValue(Node node, int value) {
         if (node == null) {
-            node = new Node(key);
+            node = new Node(value);
             return node;
         }
-        if (key < node.key) {
-            node.left = insertKey(node.left, key);
-        } else if (key > node.key) {
-            node.right = insertKey(node.right, key);
+        if (value < node.value) {
+            node.left = insertValue(node.left, value);
+        } else if (value > node.value) {
+            node.right = insertValue(node.right, value);
         }
         return node;
     }
 
-    void insertIterative(int key) {
-        Node newNode = new Node(key);
+    void insertIterative(int value) {
+        Node newNode = new Node(value);
         if (root == null) {
             root = newNode;
             return;
         }
         Node curr = root;
         while (true) {
-            if (key < curr.key) {
+            if (value < curr.value) {
                 if (curr.left == null) {
                     curr.left = newNode;
                     break;
@@ -62,27 +62,27 @@ final class BinarySearchTree {
         }
     }
 
-    Node search(int key) {
-        return search(root, key);
+    Node search(int value) {
+        return search(root, value);
     }
-    private Node search(Node node, int key) {
+    private Node search(Node node, int value) {
         if (node == null) return null;
-        if (key == node.key) return node;
-        if (key < node.key) return search(node.left, key);
-        return search(node.right, key);
+        if (value == node.value) return node;
+        if (value < node.value) return search(node.left, value);
+        return search(node.right, value);
     }
 
-    void deleteKey(int key) {
-        root = deleteKey(root, key);
+    void deleteValue(int value) {
+        root = deleteValue(root, value);
     }
-    Node deleteKey(Node root, int key) {
+    Node deleteValue(Node root, int value) {
         if (root == null) return null;
 
         // Find the node to be deleted
-        if (key < root.key) {
-            root.left = deleteKey(root.left, key);
-        } else if (key > root.key) {
-            root.right = deleteKey(root.right, key);
+        if (value < root.value) {
+            root.left = deleteValue(root.left, value);
+        } else if (value > root.value) {
+            root.right = deleteValue(root.right, value);
         } else {
             // If the node is with only one child or no child
             if (root.left == null) return root.right;
@@ -90,19 +90,19 @@ final class BinarySearchTree {
 
             // If the node has two children
             // Place the inorder successor in position of the node to be deleted
-            root.key = min(root.right);
+            root.value = min(root.right);
 
             // Delete the inorder successor
-            root.right = deleteKey(root.right, root.key);
+            root.right = deleteValue(root.right, root.value);
         }
 
         return root;
     }
 
     int min(Node root) {
-        int min = root.key;
+        int min = root.value;
         while (root.left != null) {
-            min = root.left.key;
+            min = root.left.value;
             root = root.left;
         }
         return min;
@@ -133,7 +133,7 @@ final class BinarySearchTree {
     }
 
     void print(Node node) {
-        System.out.println(node.key);
+        System.out.println(node.value);
     }
 
     public static void main(String[] args) {
