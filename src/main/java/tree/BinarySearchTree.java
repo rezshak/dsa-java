@@ -137,13 +137,19 @@ final class BinarySearchTree {
     }
 
     public static void main(String[] args) {
+
         BinarySearchTree bst = new BinarySearchTree();
 
-        bst.root = new Node(15);
-        bst.root.left = new Node(12);
-        bst.root.right = new Node(21);
+        bst.insert(17);
+        bst.insert(11);
+        bst.insert(21);
+        bst.insert(26);
 
-//        bst.postorder(bst.root);
+//        bst.root = new Node(17);
+//        bst.root.left = new Node(11);
+//        bst.root.right = new Node(21);
+
+        bst.preorder(bst.root);
 
         Node found = bst.search(bst.root, 14);
         System.out.println(found == null ? "Not Found" : "Found " + found);
