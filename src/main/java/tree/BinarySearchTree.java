@@ -62,14 +62,34 @@ final class BinarySearchTree {
         }
     }
 
-    Node search(int value) {
-        return search(root, value);
+    boolean search(int value) {
+        return searchHelper(root, value);
     }
-    private Node search(Node node, int value) {
-        if (node == null) return null;
-        if (value == node.value) return node;
-        if (value < node.value) return search(node.left, value);
-        return search(node.right, value);
+    private boolean searchHelper(Node node, int value) {
+        if (node == null) {
+            return false;
+        }
+        if (value == node.value) {
+            return true;
+        }
+        if (value < node.value) {
+            return searchHelper(node.left, value);
+        }
+        return searchHelper(node.right, value);
+    }
+
+    boolean searchIterative(int value) {
+        Node curr = root;
+        while (curr != null) {
+            if (value == curr.value) {
+                return true;
+            } else if (value < curr.value) {
+                curr = curr.left;
+            } else {
+                curr = curr.right;
+            }
+        }
+        return false;
     }
 
     void deleteValue(int value) {
@@ -154,9 +174,7 @@ final class BinarySearchTree {
 
         bst.preorder(bst.root);
 
-        Node found = bst.search(bst.root, 14);
-        System.out.println(found == null ? "Not Found" : "Found " + found);
+        System.out.println(bst.search(14));
 
-        System.out.println("Root " + bst.root);
     }
 }
