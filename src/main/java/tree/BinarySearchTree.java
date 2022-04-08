@@ -11,7 +11,7 @@ final class BinarySearchTree {
         }
         @Override
         public String toString() {
-            return "Node: " + value;
+            return "" + value;
         }
     }
 
@@ -133,7 +133,10 @@ final class BinarySearchTree {
     }
 
     void print(Node node) {
-        System.out.println(node.value);
+        System.out.println("Root: " + root);
+        System.out.println("  Curr: " + node);
+        System.out.println("  Left: " + node.left);
+        System.out.println("  Right: " + node.right);
     }
 
     public static void main(String[] args) {
