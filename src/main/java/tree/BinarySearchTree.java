@@ -11,7 +11,7 @@ final class BinarySearchTree {
         }
         @Override
         public String toString() {
-            return "Node: " + value;
+            return "" + value;
         }
     }
 
@@ -62,14 +62,34 @@ final class BinarySearchTree {
         }
     }
 
-    Node search(int value) {
-        return search(root, value);
+    boolean search(int value) {
+        return searchHelper(root, value);
     }
-    private Node search(Node node, int value) {
-        if (node == null) return null;
-        if (value == node.value) return node;
-        if (value < node.value) return search(node.left, value);
-        return search(node.right, value);
+    private boolean searchHelper(Node node, int value) {
+        if (node == null) {
+            return false;
+        }
+        if (value == node.value) {
+            return true;
+        }
+        if (value < node.value) {
+            return searchHelper(node.left, value);
+        }
+        return searchHelper(node.right, value);
+    }
+
+    boolean searchIterative(int value) {
+        Node curr = root;
+        while (curr != null) {
+            if (value == curr.value) {
+                return true;
+            } else if (value < curr.value) {
+                curr = curr.left;
+            } else {
+                curr = curr.right;
+            }
+        }
+        return false;
     }
 
     void deleteValue(int value) {
@@ -133,21 +153,28 @@ final class BinarySearchTree {
     }
 
     void print(Node node) {
-        System.out.println(node.value);
+        System.out.println("Root: " + root);
+        System.out.println("  Curr: " + node);
+        System.out.println("  Left: " + node.left);
+        System.out.println("  Right: " + node.right);
     }
 
     public static void main(String[] args) {
+
         BinarySearchTree bst = new BinarySearchTree();
 
-        bst.root = new Node(15);
-        bst.root.left = new Node(12);
-        bst.root.right = new Node(21);
+        bst.insert(17);
+        bst.insert(11);
+        bst.insert(21);
+        bst.insert(26);
 
-//        bst.postorder(bst.root);
+//        bst.root = new Node(17);
+//        bst.root.left = new Node(11);
+//        bst.root.right = new Node(21);
 
-        Node found = bst.search(bst.root, 14);
-        System.out.println(found == null ? "Not Found" : "Found " + found);
+        bst.preorder(bst.root);
 
-        System.out.println("Root " + bst.root);
+        System.out.println(bst.search(14));
+
     }
 }
