@@ -19,8 +19,7 @@ final class ArrayQueue {
     }
 
     void enqueue(int item) {
-        if (isFull())
-            throw new IllegalStateException();
+        if (isFull()) throw new RuntimeException("Queue is full");
 
         items[rear] = item;
         rear = (rear + 1) % items.length;
@@ -28,8 +27,7 @@ final class ArrayQueue {
     }
 
     int dequeue() {
-        if (isEmpty())
-            throw new IllegalStateException();
+        if (isEmpty()) throw new RuntimeException("Queue is empty");
 
         int item = items[front];
         items[front] = 0;
