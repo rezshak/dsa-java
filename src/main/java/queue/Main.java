@@ -3,6 +3,7 @@ package queue;
 final class Main {
 
     public static void main(String[] args) {
+
         ArrayQueue ad = new ArrayQueue();
         ad.enqueue(10);
         ad.enqueue(20);
@@ -17,5 +18,17 @@ final class Main {
         ad.enqueue(60);
         System.out.println(ad);
 
+
+        StackQueue sq = new StackQueue();
+        sq.enqueue(10);
+        sq.enqueue(20);
+        sq.enqueue(30);
+        System.out.println(sq);
+        System.out.println(sq.dequeue());
+        System.out.println(sq.dequeue());
+        System.out.println(sq.dequeue());
+        System.out.println(sq);
+
     }
+
 }
