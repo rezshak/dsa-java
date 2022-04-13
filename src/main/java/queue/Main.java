@@ -29,6 +29,16 @@ final class Main {
         System.out.println(sq.dequeue());
         System.out.println(sq);
 
+        PriorityQueue pq = new PriorityQueue();
+        pq.enqueue(10);
+        pq.enqueue(20);
+        pq.enqueue(30);
+        System.out.println(pq);
+        System.out.println(pq.dequeue());
+        System.out.println(pq.dequeue());
+        System.out.println(pq.dequeue());
+        System.out.println(pq);
+
     }
 
 }
