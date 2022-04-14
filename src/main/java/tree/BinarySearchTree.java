@@ -32,7 +32,7 @@ final class BinarySearchTree {
         }
         if (value < node.value) {
             node.left = insertHelper(node.left, value);
-        } else if (value > node.value) {
+        } else {
             node.right = insertHelper(node.right, value);
         }
         return node;
@@ -62,32 +62,21 @@ final class BinarySearchTree {
         }
     }
 
-    boolean search(int value) {
-        return searchHelper(root, value);
+    boolean find(int value) {
+        return findHelper(root, value);
     }
-    private boolean searchHelper(Node node, int value) {
-        if (node == null) {
-            return false;
-        }
-        if (value == node.value) {
-            return true;
-        }
-        if (value < node.value) {
-            return searchHelper(node.left, value);
-        }
-        return searchHelper(node.right, value);
+    boolean findHelper(Node node, int target) {
+        if (node == null) return false;
+        if (target == node.value) return true;
+        if (target < node.value) return findHelper(node.left, target);
+        return findHelper(node.right, target);
     }
-
-    boolean searchIterative(int value) {
+    boolean findIterative(int target) {
         Node curr = root;
         while (curr != null) {
-            if (value == curr.value) {
-                return true;
-            } else if (value < curr.value) {
-                curr = curr.left;
-            } else {
-                curr = curr.right;
-            }
+            if (target == curr.value) return true;
+            if (target < curr.value) curr = curr.left;
+            else curr = curr.right;
         }
         return false;
     }
@@ -174,7 +163,7 @@ final class BinarySearchTree {
 
         bst.preorder(bst.root);
 
-        System.out.println(bst.search(14));
+        System.out.println(bst.find(14));
 
     }
 }
