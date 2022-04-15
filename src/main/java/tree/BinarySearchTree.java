@@ -11,7 +11,7 @@ final class BinarySearchTree {
         }
         @Override
         public String toString() {
-            return "" + value;
+            return String.valueOf(value);
         }
     }
 
@@ -108,11 +108,31 @@ final class BinarySearchTree {
         return root;
     }
 
-    int min(Node root) {
-        int min = root.value;
-        while (root.left != null) {
-            min = root.left.value;
-            root = root.left;
+    int height() {
+        return height(root);
+    }
+
+    int height(Node node) {
+        if (node == null) return -1;
+        if (node.left == null && node.right == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    int min() {
+        return min(root);
+    }
+
+    int min(Node node) {
+        if (node == null) return 0;
+        if (node.left == null) return node.value;
+        return min(node.left);
+    }
+
+    int minIterative(Node node) {
+        int min = node.value;
+        while (node.left != null) {
+            min = node.left.value;
+            node = node.left;
         }
         return min;
     }
@@ -146,6 +166,7 @@ final class BinarySearchTree {
         System.out.println("  Curr: " + node);
         System.out.println("  Left: " + node.left);
         System.out.println("  Right: " + node.right);
+        System.out.println("  Height: " + height(node));
     }
 
     public static void main(String[] args) {
@@ -156,6 +177,7 @@ final class BinarySearchTree {
         bst.insert(11);
         bst.insert(21);
         bst.insert(26);
+        bst.insert(5);
 
 //        bst.root = new Node(17);
 //        bst.root.left = new Node(11);
@@ -164,6 +186,11 @@ final class BinarySearchTree {
         bst.preorder(bst.root);
 
         System.out.println(bst.find(14));
+
+        System.out.println("height: " + bst.height());
+
+        System.out.println("min iterative: " + bst.min());
+        System.out.println("min: " + bst.min());
 
     }
 }
