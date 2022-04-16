@@ -161,14 +161,6 @@ final class BinarySearchTree {
         print(node);
     }
 
-    void print(Node node) {
-        System.out.println("Root: " + root);
-        System.out.println("  Curr: " + node);
-        System.out.println("  Left: " + node.left);
-        System.out.println("  Right: " + node.right);
-        System.out.println("  Height: " + height(node));
-    }
-
     public static void main(String[] args) {
 
         BinarySearchTree bst = new BinarySearchTree();
@@ -192,5 +184,13 @@ final class BinarySearchTree {
         System.out.println("min iterative: " + bst.min());
         System.out.println("min: " + bst.min());
 
+    }
+
+    private void print(Node node) {
+        System.out.println("Root: " + root);
+        System.out.println("  Curr: " + node);
+        System.out.println("  Left: " + node.left);
+        System.out.println("  Right: " + node.right);
+        System.out.println("  Height: " + height(node));
     }
 }

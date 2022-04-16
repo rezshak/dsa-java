@@ -3,15 +3,15 @@ package tree;
 final class BinaryTree {
 
     static class Node {
-        int item;
+        int value;
         Node left, right;
-        Node(int item) {
-            this.item = item;
+        Node(int value) {
+            this.value = value;
             left = right = null;
         }
         @Override
         public String toString() {
-            return "Node: " + item;
+            return String.valueOf(value);
         }
     }
 
@@ -19,6 +19,15 @@ final class BinaryTree {
 
     BinaryTree() {
         root = null;
+    }
+
+    int height() {
+        return height(root);
+    }
+    private int height(Node node) {
+        if (node == null) return -1;
+        if (node.left == null && node.right == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
     // nlr
@@ -126,8 +135,12 @@ final class BinaryTree {
         System.out.println("Complete: " + bt.isCompleteBinaryTree(bt.root));
     }
 
-    private static void print(Node node) {
-        System.out.println(node);
+    private void print(Node node) {
+        System.out.println("Root: " + root);
+        System.out.println("  Curr: " + node);
+        System.out.println("  Left: " + node.left);
+        System.out.println("  Right: " + node.right);
+        System.out.println("  Height: " + height(node));
     }
 
 }
