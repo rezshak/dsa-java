@@ -6,7 +6,7 @@ import java.util.Map;
 
 final class Fibonacci {
 
-    // time: Ω(n), Θ(n), O(n); space: O(n)
+    // Time: Ω(n), Θ(n), O(n); Space: O(n)
     int[] fibonacciDynamic(int n) {
         int[] fibs = new int[n + 1];
         fibs[0] = 0;
@@ -17,7 +17,7 @@ final class Fibonacci {
         return fibs;
     }
 
-    // time: Ω(n), Θ(n), O(n); space: O(1)
+    // Time: Ω(n), Θ(n), O(n); Space: O(1)
     int fibonacciIterative(int n) {
         int a = 0, b = 1;
         for (int i = 2; i <= n; i++) {
@@ -28,7 +28,7 @@ final class Fibonacci {
         return b;
     }
 
-    // time: Ω(2^n), Θ(2^n), O(2^n); space: O(n)
+    // Time: Ω(2^n), Θ(2^n), O(2^n); Space: O(n)
     int fibonacciRecursive(int n) {
         if (n == 0 || n == 1) {
             return n;
@@ -36,7 +36,7 @@ final class Fibonacci {
         return fibonacciRecursive(n - 2) + fibonacciRecursive(n - 1);
     }
 
-    // time: Ω(n), Θ(n), O(n); space: O(n)
+    // Time: Ω(n), Θ(n), O(n); Space: O(n)
     int fibonacciRecursiveDynamic(int n) {
         Map<Integer, Integer> cache = new HashMap<>();
         if (n == 0 || n == 1) {
@@ -47,12 +47,19 @@ final class Fibonacci {
         }
     }
 
+    // Time: Ω(n), Θ(n), O(n); Space: O(n)
+    int fibAdditiveSequence(int n, int a, int b) {
+        if (n == 0) return a;
+        return fibAdditiveSequence(n - 1, b, a + b);
+    }
+
     public static void main(String[] args) {
         Fibonacci f = new Fibonacci();
         System.out.println(Arrays.toString(f.fibonacciDynamic(10)));
         System.out.println(f.fibonacciIterative(8));
         System.out.println(f.fibonacciRecursive(8));
         System.out.println(f.fibonacciRecursiveDynamic(8));
+        System.out.println(f.fibAdditiveSequence(8, 0, 1));
     }
 
 }
