@@ -1,4 +1,4 @@
-package dp;
+package recursion;
 
 public class TowerOfHanoi {
 

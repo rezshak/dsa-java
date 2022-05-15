@@ -1,4 +1,4 @@
-package dp;
+package recursion;
 
 final class Factorial {
 
