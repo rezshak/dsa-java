@@ -1,12 +1,13 @@
 package recursion;
 
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.runner.*;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertTrue;
 
 /*
  * Permute list of unique integers.
