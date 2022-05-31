@@ -24,10 +24,10 @@ public final class LevelOrderTraversal {
         return left || right;
     }
 
-    static void levelOrderIterative(Node node) {
-        if (node == null) return;
+    static void levelOrderIterative(Node root) {
+        if (root == null) return;
         Queue<Node> queue = new LinkedList<>();
-        queue.add(node);
+        queue.add(root);
         while (!queue.isEmpty()) {
             Node curr = queue.poll();
             System.out.print(curr + " ");
