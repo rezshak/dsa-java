@@ -25,6 +25,7 @@ public final class LevelOrderTraversal {
     }
 
     static void levelOrderIterative(Node node) {
+        if (node == null) return;
         Queue<Node> queue = new LinkedList<>();
         queue.add(node);
         while (!queue.isEmpty()) {
