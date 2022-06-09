@@ -2,17 +2,14 @@ package sort;
 
 import java.util.Arrays;
 
-final class HeapSort {
+final class Heapsort {
 
-    void heapSort(int[] A) {
-
+    void heapsort(int[] A) {
         int len = A.length;
-
         // Build max heap (rearrange array)
         for (int i = len / 2 - 1; i >= 0; i--) {
             heapify(A, len, i);
         }
-
         // Heap sort
         for (int i = len - 1; i >= 0; i--) {
             swap(A, i, 0);
@@ -25,29 +22,29 @@ final class HeapSort {
     // Right child of i: (2 * p) + 2
     void heapify(int[] A, int len, int i) {
 
-        // Find largest among root, left child and right child
-        int largest = i;
+        // Find maxIdx among root, left child and right child
+        int maxIdx = i;
         int left = (2 * i) + 1;
         int right = (2 * i) + 2;
 
         // If left child is larger than root, bubble it up
-        if (left < len && A[left] > A[largest]) largest = left;
-        
-        // If right child is larger than largest so far, bubble it up
-        if (right < len && A[right] > A[largest]) largest = right;
+        if (left < len && A[left] > A[maxIdx]) maxIdx = left;
 
-        // Swap and continue heapifying if root is not largest
-        if (largest != i) {
-            swap(A, i, largest);
-            heapify(A, len, largest);
+        // If right child is larger than maxIdx so far, bubble it up
+        if (right < len && A[right] > A[maxIdx]) maxIdx = right;
+
+        // Swap and continue heapifying if root is not maxIdx
+        if (maxIdx != i) {
+            swap(A, i, maxIdx);
+            heapify(A, len, maxIdx);
         }
     }
 
     public static void main(String[] args) {
-        int[] arr1 = { 5, 12, 9, 1, 7, 7, 10 };
-        HeapSort hs = new HeapSort();
+        int[] arr1 = {5, 12, 9, 1, 7, 7, 10};
+        Heapsort hs = new Heapsort();
         System.out.println("Orig: " + Arrays.toString(arr1));
-        hs.heapSort(arr1);
+        hs.heapsort(arr1);
         System.out.println("Sorted: " + Arrays.toString(arr1));
     }
 
