@@ -27,11 +27,11 @@ final class Heapsort {
         int leftChildIdx = (2 * i) + 1;
         int rightChildIdx = (2 * i) + 2;
 
-        // If left child is larger than root, bubble it up
+        // If left child is larger than max so far, bubble it up
         if (leftChildIdx < len && A[leftChildIdx] > A[maxIdx])
             maxIdx = leftChildIdx;
 
-        // If right child is larger than maxIdx so far, bubble it up
+        // If right child is larger than max so far, bubble it up
         if (rightChildIdx < len && A[rightChildIdx] > A[maxIdx])
             maxIdx = rightChildIdx;
 
