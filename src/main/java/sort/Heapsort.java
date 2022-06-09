@@ -7,9 +7,9 @@ final class Heapsort {
     void heapsort(int[] A) {
         int len = A.length;
         // Build max heap (rearrange array)
-        for (int i = len / 2 - 1; i >= 0; i--) {
+        for (int i = len / 2 - 1; i >= 0; i--)
             heapify(A, len, i);
-        }
+
         // Heap sort
         for (int i = len - 1; i >= 0; i--) {
             swap(A, i, 0);
@@ -22,16 +22,18 @@ final class Heapsort {
     // Right child of i: (2 * p) + 2
     void heapify(int[] A, int len, int i) {
 
-        // Find maxIdx among root, left child and right child
+        // Find largest among root, left child and right child
         int maxIdx = i;
-        int left = (2 * i) + 1;
-        int right = (2 * i) + 2;
+        int leftChildIdx = (2 * i) + 1;
+        int rightChildIdx = (2 * i) + 2;
 
         // If left child is larger than root, bubble it up
-        if (left < len && A[left] > A[maxIdx]) maxIdx = left;
+        if (leftChildIdx < len && A[leftChildIdx] > A[maxIdx])
+            maxIdx = leftChildIdx;
 
         // If right child is larger than maxIdx so far, bubble it up
-        if (right < len && A[right] > A[maxIdx]) maxIdx = right;
+        if (rightChildIdx < len && A[rightChildIdx] > A[maxIdx])
+            maxIdx = rightChildIdx;
 
         // Swap and continue heapifying if root is not maxIdx
         if (maxIdx != i) {
