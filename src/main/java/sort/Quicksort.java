@@ -11,10 +11,14 @@ final class Quicksort {
     static final int[] ARR3 = {6, 43, 48, 18, 62, 29, 26, 3, 22, 13, 17, 56, 90};
     static final int[] ARR4 = {36, 72, 98, 98, 9, 60, 18, 60, 62, 74, 45, 62, 15, 55, 53, 100, 15, 21, 71, 48, 21, 43};
 
+    void quicksort(int[] A) {
+        quicksort(A, 0, ARR2.length - 1);
+    }
+
     void quicksort(int[] A, int left, int right) {
         if (left >= right) return;
-        int pivot = lomutoPartition(A, left, right);
-        quicksort(A, left, pivot - 1);
+        int pivot = hoarePartition(A, left, right);
+        quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot + 1
         quicksort(A, pivot + 1, right);
     }
 
@@ -50,7 +54,7 @@ final class Quicksort {
 
     public static void main(String... args) {
         Quicksort qs = new Quicksort();
-        qs.quicksort(ARR2, 0, ARR2.length - 1);
+        qs.quicksort(ARR2);
         System.out.println(Arrays.toString(ARR2));
     }
 
