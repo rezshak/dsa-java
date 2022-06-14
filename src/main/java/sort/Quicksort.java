@@ -18,7 +18,7 @@ final class Quicksort {
     void quicksort(int[] A, int left, int right) {
         if (left >= right) return;
         int pivot = hoarePartition(A, left, right);
-        quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot + 1
+        quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot - 1
         quicksort(A, pivot + 1, right);
     }
 
