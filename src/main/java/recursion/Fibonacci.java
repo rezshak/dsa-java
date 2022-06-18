@@ -18,6 +18,18 @@ final class Fibonacci {
     }
 
     // Time: Ω(n), Θ(n), O(n); Space: O(1)
+    int fibonacciDynamicOptimized(int n) {
+        int[] fibs = new int[3];
+        fibs[0] = 0;
+        fibs[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            int fib = fibs[(i - 1) % 3] + fibs[(i - 2) % 3];
+            fibs[i % 3] = fib;
+        }
+        return fibs[n % 3];
+    }
+
+    // Time: Ω(n), Θ(n), O(n); Space: O(1)
     int fibonacciIterative(int n) {
         int fib = 0, a = 0, b = 1;
         for (int i = 2; i <= n; i++) {
@@ -54,6 +66,7 @@ final class Fibonacci {
         System.out.println(f.fibonacciIterative(8));
         System.out.println(f.fibonacciRecursive(8));
         System.out.println(f.fibonacciRecursiveDynamic(8));
+        System.out.println(f.fibonacciDynamicOptimized(10));
         System.out.println(f.fibAdditiveSequence(8, 0, 1));
     }
 
