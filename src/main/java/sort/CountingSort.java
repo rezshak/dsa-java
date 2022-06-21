@@ -23,8 +23,8 @@ final class CountingSort {
         int max = Arrays.stream(A).max().getAsInt();
         int[] counts = new int[max + 1];
         for (int n : A) counts[n]++;
-
-        for (int i = 1; i <= max; i++) counts[i] += counts[i - 1];
+        for (int i = 1; i < counts.length; i++)
+            counts[i] += counts[i - 1];
 
         int[] sorted = new int[A.length];
         for (int i = sorted.length - 1; i >= 0; i--) {
@@ -40,7 +40,7 @@ final class CountingSort {
     public static void main(String[] args) {
         CountingSort cs = new CountingSort();
         System.out.println("Original: " + Arrays.toString(ARR1));
-        cs.countingSort(ARR1);
+        cs.countingSortLegacy(ARR1);
         System.out.println("Sorted: " + Arrays.toString(ARR1));
     }
 
