@@ -29,7 +29,7 @@ final class CountingSort {
         int[] sorted = new int[A.length];
         for (int i = sorted.length - 1; i >= 0; i--) {
             int origVal = A[i];
-            int origValIdx = counts[A[i]] - 1;
+            int origValIdx = counts[origVal] - 1;
             sorted[origValIdx] = origVal;
             counts[origVal]--;
         }
