@@ -3,15 +3,48 @@ package list;
 class ListNode {
     int val;
     ListNode next;
+    ListNode() {}
     ListNode(int val) {
         this.val = val;
         this.next = null;
     }
 }
 
-public class MergeLists {
+public class MergeSortedLists {
 
     ListNode mergeSortedLists(ListNode list1, ListNode list2) {
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+        ListNode head;
+        if (list1.val <= list2.val) {
+            head = list1;
+            list1 = list1.next;
+        } else {
+            head = list2;
+            list2 = list2.next;
+        }
+        head.next = mergeSortedLists(list1, list2);
+        return head;
+    }
+
+    ListNode mergeSortedListsIterative(ListNode list1, ListNode list2) {
+        ListNode head = new ListNode();
+        ListNode tail = head;
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+        tail.next = list1 == null ? list2 : list1;
+        return head.next;
+    }
+
+    ListNode mergeSortedListsIterative2(ListNode list1, ListNode list2) {
         if (list1 == null) return list2;
         if (list2 == null) return list1;
         ListNode dummy = new ListNode(-99);
@@ -56,10 +89,13 @@ public class MergeLists {
         list2.next = new ListNode(2);
         list2.next.next = new ListNode(3);
 
-        MergeLists ml = new MergeLists();
-        ListNode merged = ml.mergeSortedLists(list1, list2);
+        MergeSortedLists ml = new MergeSortedLists();
 
-        ml.printLinkedList(merged);
+        ListNode merged1 = ml.mergeSortedListsIterative(list1, list2);
+        ml.printLinkedList(merged1);
+
+//        ListNode merged2 = ml.mergeSortedLists(list1, list2);
+//        ml.printLinkedList(merged2);
     }
 
 }
