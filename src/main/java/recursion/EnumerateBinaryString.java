@@ -36,12 +36,12 @@ class EnumerateBinaryString {
     static List<String> binaryStringsIterative(int n) {
         List<String> result = List.of("0", "1");
         for (int i = 2; i <= n; i++) {
-            List<String> newResult = new ArrayList<>();
+            List<String> slate = new ArrayList<>();
             for (String s : result) {
-                newResult.add(s + "0");
-                newResult.add(s + "1");
+                slate.add(s + "0");
+                slate.add(s + "1");
             }
-            result = newResult;
+            result = slate;
         }
         return result;
     }
