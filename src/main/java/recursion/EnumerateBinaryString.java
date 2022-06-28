@@ -18,6 +18,7 @@ class EnumerateBinaryString {
         }
     }
 
+    // Naive approach
     static List<String> binaryStrings(int n) {
         if (n == 1)
             return List.of("0", "1");
@@ -32,11 +33,23 @@ class EnumerateBinaryString {
         }
     }
 
+    static List<String> binaryStringsIterative(int n) {
+        List<String> result = List.of("0", "1");
+        for (int i = 2; i <= n; i++) {
+            List<String> newResult = new ArrayList<>();
+            for (String s : result) {
+                newResult.add(s + "0");
+                newResult.add(s + "1");
+            }
+            result = newResult;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        List<String> perms = enumerate(3);
-        System.out.println(perms);
-        perms = binaryStrings(3);
-        System.out.println(perms);
+        System.out.println(enumerate(3));
+        System.out.println(binaryStrings(3));
+        System.out.println(binaryStringsIterative(3));
     }
 
 }
