@@ -11,10 +11,10 @@ class EnumerateBinaryString {
     }
 
     static void enumerateHelper(String slate, List<String> list, int n) {
-        if (slate.length() == n) list.add(slate);
+        if (n == 0) list.add(slate);
         else {
-            enumerateHelper(slate + "0", list, n);
-            enumerateHelper(slate + "1", list, n);
+            enumerateHelper(slate + "0", list, n - 1);
+            enumerateHelper(slate + "1", list, n - 1);
         }
     }
 
