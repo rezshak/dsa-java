@@ -1,6 +1,5 @@
 package recursion;
 
-import java.sql.Array;
 import java.util.*;
 
 class EnumerateBinaryString {
