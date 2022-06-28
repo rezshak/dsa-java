@@ -1,5 +1,6 @@
 package recursion;
 
+import java.sql.Array;
 import java.util.*;
 
 class EnumerateBinaryString {
@@ -18,8 +19,24 @@ class EnumerateBinaryString {
         }
     }
 
+    static List<String> binaryStrings(int n) {
+        if (n == 1)
+            return List.of("0", "1");
+        else {
+            List<String> prev = binaryStrings(n - 1);
+            List<String> result = new ArrayList<>();
+            for (String b : prev) {
+                result.add(b + "0");
+                result.add(b + "1");
+            }
+            return result;
+        }
+    }
+
     public static void main(String[] args) {
         List<String> perms = enumerate(3);
+        System.out.println(perms);
+        perms = binaryStrings(3);
         System.out.println(perms);
     }
 
