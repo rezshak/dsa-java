@@ -12,7 +12,7 @@ final class Quicksort {
     static final int[] ARR4 = {36, 72, 98, 98, 9, 60, 18, 60, 62, 74, 45, 62, 15, 55, 53, 100, 15, 21, 71, 48, 21, 43};
 
     void quicksort(int[] A) {
-        quicksort(A, 0, ARR2.length - 1);
+        quicksort(A, 0, A.length - 1);
     }
 
     void quicksort(int[] A, int left, int right) {
