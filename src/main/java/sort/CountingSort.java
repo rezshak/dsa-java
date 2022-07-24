@@ -23,14 +23,14 @@ final class CountingSort {
         int max = Arrays.stream(A).max().getAsInt();
         int[] counts = new int[max + 1];
         for (int n : A) counts[n]++;
-        for (int i = 1; i < counts.length; i++)
+        for (int i = 1; i < counts.length; i++) {
             counts[i] += counts[i - 1];
-
+        }
         int[] sorted = new int[A.length];
         for (int i = sorted.length - 1; i >= 0; i--) {
             int origVal = A[i];
-            int origValIdx = counts[origVal] - 1;
-            sorted[origValIdx] = origVal;
+            int origValSortedIdx = counts[origVal] - 1;
+            sorted[origValSortedIdx] = origVal;
             counts[origVal]--;
         }
 
