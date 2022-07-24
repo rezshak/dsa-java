@@ -28,10 +28,10 @@ final class CountingSort {
         }
         int[] sorted = new int[A.length];
         for (int i = sorted.length - 1; i >= 0; i--) {
-            int origVal = A[i];
-            int origValSortedIdx = counts[origVal] - 1;
-            sorted[origValSortedIdx] = origVal;
-            counts[origVal]--;
+            int val = A[i];
+            int valSortedIdx = counts[val] - 1;
+            sorted[valSortedIdx] = val;
+            counts[val]--;
         }
 
         System.arraycopy(sorted, 0, A, 0, A.length);
