@@ -12,15 +12,12 @@ public final class LevelOrderTraversal {
 
     private static boolean levelOrder(Node node, int level) {
         if (node == null) return false;
-
         if (level == 1) {
             System.out.print(node + " ");
             return true;
         }
-
         boolean left = levelOrder(node.left, level - 1);
         boolean right = levelOrder(node.right, level - 1);
-
         return left || right;
     }
 
