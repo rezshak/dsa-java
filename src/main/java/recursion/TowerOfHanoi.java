@@ -1,4 +1,4 @@
-package recursion;
+package main.java.recursion;
 
 import static java.lang.String.format;
 

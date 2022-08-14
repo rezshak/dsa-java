@@ -1,4 +1,4 @@
-package sort;
+package main.java.sort;
 
 final class CycleSort {
 

@@ -1,4 +1,4 @@
-package list;
+package main.java.list;
 
 class ListNode {
     int val;

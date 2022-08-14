@@ -1,4 +1,4 @@
-package stack;
+package main.java.stack;
 
 import org.junit.Before;
 import org.junit.Test;

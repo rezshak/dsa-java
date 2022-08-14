@@ -1,4 +1,4 @@
-package dict;
+package main.java.dict;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

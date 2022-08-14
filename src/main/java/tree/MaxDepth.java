@@ -1,4 +1,4 @@
-package tree;
+package main.java.tree;
 
 public final class MaxDepth {
 

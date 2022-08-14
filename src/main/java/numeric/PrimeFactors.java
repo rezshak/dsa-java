@@ -1,4 +1,4 @@
-package numeric;
+package main.java.numeric;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package patterns;
+package main.java.patterns;
 
 import java.util.HashMap;
 import java.util.Map;

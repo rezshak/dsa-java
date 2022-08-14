@@ -1,4 +1,4 @@
-package array;
+package main.java.array;
 
 import org.junit.Test;
 
