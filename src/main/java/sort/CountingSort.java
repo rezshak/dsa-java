@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-final class CountingSort {
+class CountingSort {
 
     static final int[] ARR0 = { 1, 3, 2 };
     static final int[] ARR1 = { 2, 5, 3, 1, 5 };

@@ -2,7 +2,7 @@ package main.java.queue;
 
 import java.util.Arrays;
 
-final class ArrayQueue {
+class ArrayQueue {
 
     static final int INITIAL_CAPACITY = 5;
 

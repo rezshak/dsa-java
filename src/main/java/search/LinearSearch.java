@@ -1,6 +1,6 @@
 package main.java.search;
 
-final class LinearSearch {
+class LinearSearch {
 
     int linearSearch(int[] A, int target) {
         for (int i = 0; i < A.length; i++) {

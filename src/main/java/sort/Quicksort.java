@@ -3,7 +3,7 @@ package main.java.sort;
 import java.util.Arrays;
 import java.util.Random;
 
-final class Quicksort {
+class Quicksort {
 
     static final int[] ARR0 = {8};
     static final int[] ARR1 = {8, 6};

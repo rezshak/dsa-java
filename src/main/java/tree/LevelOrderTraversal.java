@@ -3,7 +3,7 @@ package main.java.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public final class LevelOrderTraversal {
+class LevelOrderTraversal {
 
     public static void levelOrder(Node root) {
         int level = 1;

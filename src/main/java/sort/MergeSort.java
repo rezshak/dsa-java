@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-final class MergeSort {
+class MergeSort {
 
     static final int[] ARR0 = { 8, 4 };
     static final int[] ARR1 = { 8, 6, 2 };

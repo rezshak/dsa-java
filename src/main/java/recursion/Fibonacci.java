@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-final class Fibonacci {
+class Fibonacci {
 
     // Time: Ω(n), Θ(n), O(n); Space: O(n)
     int[] fibonacciDynamic(int n) {

@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-final class RadixSort {
+class RadixSort {
 
     void radixSort(int[] A) {
         int max = Arrays.stream(A).max().getAsInt();

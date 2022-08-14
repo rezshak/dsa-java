@@ -2,7 +2,7 @@ package main.java.queue;
 
 import java.util.*;
 
-final class StackQueue {
+class StackQueue {
 
     Stack<Integer> st1;
     Stack<Integer> st2;

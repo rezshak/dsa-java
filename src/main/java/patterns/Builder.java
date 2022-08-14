@@ -51,7 +51,7 @@ class MealBuilder {
     }
 }
 
-final class Builder {
+class Builder {
     public static void main(String[] args) {
         MealBuilder builder = new MealBuilder();
         Meal veggie = builder.veggieCombo();

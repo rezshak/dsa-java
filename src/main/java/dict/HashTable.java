@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-final class HashTable {
+class HashTable {
     static final int INITIAL_CAPACITY = 20;
     class Entry {
         final int key;

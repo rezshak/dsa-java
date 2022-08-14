@@ -2,7 +2,7 @@ package main.java.tree;
 
 import java.util.Stack;
 
-public final class PreOrderTraversal {
+class PreOrderTraversal {
 
     public static void preorder(Node node) {
         if (node == null) return;

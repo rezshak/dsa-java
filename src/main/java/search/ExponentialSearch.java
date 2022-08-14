@@ -1,6 +1,6 @@
 package main.java.search;
 
-final class ExponentialSearch {
+class ExponentialSearch {
 
     int exponentialSearch(int[] A, int target) {
 

@@ -1,6 +1,6 @@
 package main.java.search;
 
-final class TernarySearch {
+class TernarySearch {
 
     int ternarySearch(int[] A, int target) {
         return ternarySearch(A, 0, A.length - 1, target);

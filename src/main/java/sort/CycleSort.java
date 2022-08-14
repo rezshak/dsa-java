@@ -1,6 +1,6 @@
 package main.java.sort;
 
-final class CycleSort {
+class CycleSort {
 
     void cycleSort(int[] A) {
 

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 /*
  * Permute list of unique integers.
  */
-public final class ArrayPermutations {
+class ArrayPermutations {
 
     static List<List<Integer>> getPermutations(List<Integer> array) {
         List<List<Integer>> permutations = new ArrayList<List<Integer>>();

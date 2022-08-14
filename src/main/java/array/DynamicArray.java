@@ -1,6 +1,6 @@
 package main.java.array;
 
-final class DynamicArray {
+class DynamicArray {
 
     int[] items;
     int size;

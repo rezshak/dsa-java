@@ -1,6 +1,6 @@
 package main.java.tree;
 
-final class BinaryTree {
+class BinaryTree {
 
     static class Node {
         int value;

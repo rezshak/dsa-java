@@ -1,6 +1,6 @@
 package main.java.tree;
 
-final class Node {
+class Node {
     int val;
     Node left, right;
 

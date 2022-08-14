@@ -1,6 +1,6 @@
 package main.java.search;
 
-final class BinarySearch {
+class BinarySearch {
 
     int binarySearch(int[] A, int target) {
         return binarySearch(A, 0, A.length - 1, target);

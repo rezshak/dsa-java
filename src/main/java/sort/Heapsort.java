@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-final class Heapsort {
+class Heapsort {
 
     void heapsort(int[] A) {
         int len = A.length;

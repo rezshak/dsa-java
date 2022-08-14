@@ -2,7 +2,7 @@ package main.java.tree;
 
 import java.util.Stack;
 
-public final class InOrderTraversal {
+class InOrderTraversal {
 
     public static void inorder(Node node) {
         if (node == null) return;

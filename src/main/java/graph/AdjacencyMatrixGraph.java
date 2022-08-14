@@ -1,6 +1,6 @@
 package main.java.graph;
 
-final class AdjacencyMatrixGraph {
+class AdjacencyMatrixGraph {
 
     final int numVertices;
     final boolean[][] adjMatrix;

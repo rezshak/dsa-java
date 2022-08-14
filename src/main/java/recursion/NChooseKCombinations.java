@@ -6,7 +6,7 @@ import java.util.List;
 /*
  * Given two integers n and k, find all the possible unique combinations of k numbers in range 1 to n.
  */
-public final class NChooseKCombinations {
+class NChooseKCombinations {
 
     public static List<List<Integer>> findCombinations(int n, int k) {
         List<List<Integer>> combinations = new ArrayList<List<Integer>>();

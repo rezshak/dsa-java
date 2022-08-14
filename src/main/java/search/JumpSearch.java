@@ -1,6 +1,6 @@
 package main.java.search;
 
-final class JumpSearch {
+class JumpSearch {
 
     int jumpSearch(int[] A, int target) {
 

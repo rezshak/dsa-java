@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-final class InsertionSort {
+class InsertionSort {
 
     static final int[] ARR0 = {3, 2, 1};
     static final int[] ARR1 = {8, 6, 2, 4, 5, 8};

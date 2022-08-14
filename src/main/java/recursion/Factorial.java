@@ -1,6 +1,6 @@
 package main.java.recursion;
 
-final class Factorial {
+class Factorial {
 
     int factorialIterative(int num) {
         int fact = 1;

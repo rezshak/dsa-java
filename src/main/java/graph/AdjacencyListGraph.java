@@ -2,7 +2,7 @@ package main.java.graph;
 
 import java.util.LinkedList;
 
-final class AdjacencyListGraph {
+class AdjacencyListGraph {
 
     int numVertices;
     LinkedList<Integer>[] adjLists;

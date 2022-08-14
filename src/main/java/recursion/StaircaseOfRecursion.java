@@ -3,7 +3,7 @@ package main.java.recursion;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class StaircaseOfRecursion {
+public class StaircaseOfRecursion {
     static Map<Integer, Integer> CACHE = new HashMap<>();
 
     static {

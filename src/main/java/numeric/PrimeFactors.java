@@ -3,7 +3,7 @@ package main.java.numeric;
 import java.util.ArrayList;
 import java.util.List;
 
-final class PrimeFactors {
+class PrimeFactors {
 
     static List<Integer> primeFactors(int num) {
         List<Integer> primeFactors = new ArrayList<>();

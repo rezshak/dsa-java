@@ -2,7 +2,7 @@ package main.java.tree;
 
 import java.util.Stack;
 
-public final class PostOrderTraversal {
+class PostOrderTraversal {
 
     public static void postorder(Node node) {
         if (node == null) return;

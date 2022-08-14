@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.*;
 
-final class BucketSort {
+class BucketSort {
 
     static final int[] ARR1 = {8, 6, 2, 4, 5, 8, 9};
     static final int[] ARR2 = {6, 43, 48, 18, 62, 29, 26, 3, 22, 13, 17, 56, 90};

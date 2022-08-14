@@ -3,7 +3,7 @@ package main.java.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class LetterCasePermutations {
+class LetterCasePermutations {
 
     static List<String> letterCasePermutations(String str) {
         List<String> permutations = new ArrayList<>();

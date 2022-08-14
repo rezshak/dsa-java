@@ -1,6 +1,6 @@
 package main.java.tree;
 
-public final class MaxDepth {
+class MaxDepth {
 
     public static int maxDepth(Node node) {
         if (node == null) return 0;

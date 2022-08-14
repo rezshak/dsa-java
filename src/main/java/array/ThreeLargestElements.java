@@ -2,7 +2,7 @@ package main.java.array;
 
 import java.util.Arrays;
 
-final class ThreeLargestElements {
+class ThreeLargestElements {
 
     int[] findThreeLargestNumbers(int[] A) {
         int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE, third = Integer.MIN_VALUE;
