@@ -3,7 +3,7 @@ package main.java.array;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class SortByLength {
+class SortByLength {
 
     public static String singleOccurrence(String s) {
         if (s == null || s.isEmpty()) return "";

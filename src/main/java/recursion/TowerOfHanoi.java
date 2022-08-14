@@ -2,7 +2,7 @@ package main.java.recursion;
 
 import static java.lang.String.format;
 
-public class TowerOfHanoi {
+class TowerOfHanoi {
 
     static int towerOfHanoi(int discs) {
         return (int) (Math.pow(2, discs) - 1);

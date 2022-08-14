@@ -1,6 +1,6 @@
 package main.java.dict;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         HashTable ht = new HashTable();

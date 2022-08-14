@@ -1,11 +1,10 @@
 package main.java.array;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SubArrays {
+class SubArrays {
 
     static List<int[]> findSubArraysBf(int[] A, int target) {
         List<int[]> result = new ArrayList<>();

@@ -10,7 +10,7 @@ class ListNode {
     }
 }
 
-public class MergeSortedLists {
+class MergeSortedLists {
 
     ListNode mergeSortedLists(ListNode list1, ListNode list2) {
         if (list1 == null) return list2;

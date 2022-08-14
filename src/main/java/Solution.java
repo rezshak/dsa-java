@@ -2,7 +2,7 @@ package main.java;
 
 import java.util.*;
 
-public class Solution {
+class Solution {
 
     static class Node {
         int data;

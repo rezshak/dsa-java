@@ -1,15 +1,15 @@
 package main.java.stack;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class Stack {
+class Stack {
 
     static final int CAPACITY = 10;
     int[] items;
@@ -85,12 +85,11 @@ public class Stack {
         System.out.println("pop: " + st.pop());
         st.print();
 
-        JUnitCore.main("stack.Stack");
     }
 
     Stack st = null;
 
-    @Before
+    @BeforeEach
     public void setup() {
         st = new Stack();
     }
@@ -121,10 +120,12 @@ public class Stack {
         assertEquals(1, st.size());
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void pop2_emptyStack() {
         assertEquals(0, st.size());
-        st.pop();
+        assertThrows(EmptyStackException.class, () -> {
+            st.pop();
+        });
     }
 
 }

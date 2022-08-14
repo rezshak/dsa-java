@@ -1,12 +1,12 @@
 package main.java.array;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SlidingWindow {
+class SlidingWindow {
 
     static String longestUniqueSubstring(String str) {
         Map<Character, Integer> seen = new HashMap<>();

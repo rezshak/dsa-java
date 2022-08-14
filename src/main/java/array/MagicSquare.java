@@ -1,6 +1,6 @@
 package main.java.array;
 
-public class MagicSquare {
+class MagicSquare {
 
     public static boolean isMagicSquare(int[][] square) {
         int hSum = 0, vSum = 0, d1Sum = 0, d2Sum = 0;

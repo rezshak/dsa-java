@@ -1,17 +1,13 @@
 package main.java.recursion;
 
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/*
- * Permute list of unique integers.
- */
 class ArrayPermutations {
 
     static List<List<Integer>> getPermutations(List<Integer> array) {
@@ -36,7 +32,6 @@ class ArrayPermutations {
         List<Integer> array = Arrays.asList(1, 2, 3);
         List<List<Integer>> permutations = getPermutations(array);
         System.out.println(permutations);
-        JUnitCore.main("recursion.Permutations");
     }
 
     private static void swap(List<Integer> array, int i, int j) {

@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 
-public class SubSequences {
+class SubSequences {
 
     static void findAllSubSets(int[] S, Deque<Integer> dq, int len) {
         if (len == 0) {
