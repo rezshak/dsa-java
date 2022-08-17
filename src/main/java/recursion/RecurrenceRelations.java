@@ -5,7 +5,7 @@ public class RecurrenceRelations {
     // T(n) = T(n - 1) + 1
     void Test1(int n) {
         if (n >  0) {
-            System.out.printf("%dn\n", n);
+            System.out.printf("%d\n", n);
             Test1(n - 1);
         }
     }
@@ -14,7 +14,7 @@ public class RecurrenceRelations {
     void TestN(int n) {
         if (n > 0) {
             for (int i = 0; i < n; i++) {
-                System.out.printf("%dn\n", n);
+                System.out.printf("%d\n", n);
             }
             TestN(n - 1);
         }
@@ -24,7 +24,7 @@ public class RecurrenceRelations {
     void TestLogN(int n) {
         if (n > 0) {
             for (int i = 1; i < n; i *= 2) {
-                System.out.printf("%dn\n", n);
+                System.out.printf("%d\n", n);
             }
             TestLogN(n - 1);
         }
@@ -33,13 +33,16 @@ public class RecurrenceRelations {
     // T(n) = 2T(n - 1) + 1
     void Test2T(int n) {
         if (n > 0) {
-            System.out.printf("%dn\n", n);
+            System.out.printf("%d\n", n);
             Test2T(n - 1);
             Test2T(n - 1);
         }
     }
 
     public static void main(String[] args) {
+
+        RecurrenceRelations rr = new RecurrenceRelations();
+        rr.Test1(3);
 
     }
 
