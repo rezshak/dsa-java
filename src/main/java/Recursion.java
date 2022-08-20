@@ -11,7 +11,7 @@ class Recursion {
 
     void tailLoop(int n) {
         while (n > 0) {
-            System.out.printf("%d\n", n);
+            System.out.printf("%d ", n);
             n--;
         }
     }
@@ -19,26 +19,26 @@ class Recursion {
     void headRecursion(int n) {
         if (n > 0) {
             headRecursion(n - 1);
-            System.out.printf("%d\n", n);
+            System.out.printf("%d ", n);
         }
     }
 
     void headLoop(int n) {
         for (int i = 1; i <= n; i++) {
-            System.out.printf("%d\n", n);
+            System.out.printf("%d ", n);
         }
     }
 
     void indirectRecursionA(int n) {
         if (n > 0) {
-            System.out.printf("%d\n", n);
+            System.out.printf("%d ", n);
             indirectRecursionB(n - 1);
         }
     }
 
     private void indirectRecursionB(int n) {
         if (n > 1) {
-            System.out.printf("%d\n", n);
+            System.out.printf("%d ", n);
             indirectRecursionA(n / 2);
         }
     }
