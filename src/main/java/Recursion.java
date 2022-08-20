@@ -36,11 +36,19 @@ class Recursion {
         }
     }
 
-    private void indirectRecursionB(int n) {
+    void indirectRecursionB(int n) {
         if (n > 1) {
             System.out.printf("%d ", n);
             indirectRecursionA(n / 2);
         }
+    }
+
+    int nestedRecursion(int n) {
+        if (n > 100) {
+            System.out.printf("%d ", n);
+            return n - 10;
+        }
+        else return nestedRecursion(nestedRecursion(n + 11));
     }
 
     public static void main(String[] args) {
@@ -49,7 +57,8 @@ class Recursion {
 //        rec.tailLoop(3);
 //        rec.headRecursion(3);
 //        rec.headLoop(3);
-        rec.indirectRecursionA(16);
+//        rec.indirectRecursionA(16);
+        System.out.println(rec.nestedRecursion(95));
     }
 
 }
