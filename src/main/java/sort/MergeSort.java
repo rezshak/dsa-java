@@ -11,8 +11,7 @@ public class MergeSort {
 
     void mergeSort(int[] A) {
         if (A.length < 2) return;
-        int len = A.length;
-        int mid = len / 2;
+        int len = A.length, mid = len / 2;
         int[] A1 = new int[mid];
         int[] A2 = new int[len - mid];
         System.arraycopy(A, 0, A1, 0, mid);
