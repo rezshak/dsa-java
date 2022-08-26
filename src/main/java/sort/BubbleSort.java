@@ -2,10 +2,12 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-class BubbleSort {
+public class BubbleSort {
 
-    static final int[] ARR1 = {1, 3, 2};
-    static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR3 = {7};
+    private static final int[] ARR4 = {};
 
     void bubbleSort(int[] A) {
         int lastSortedIndex = A.length - 1;

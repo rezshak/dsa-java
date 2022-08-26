@@ -2,10 +2,12 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-class CountingSort {
+public class CountingSort {
 
-    static final int[] ARR0 = { 1, 3, 2 };
-    static final int[] ARR1 = { 2, 5, 3, 1, 5 };
+    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR3 = {7};
+    private static final int[] ARR4 = {};
 
     public void countingSort(int[] A) {
         int max = Arrays.stream(A).max().getAsInt();

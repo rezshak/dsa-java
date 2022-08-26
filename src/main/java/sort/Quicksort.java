@@ -3,13 +3,12 @@ package main.java.sort;
 import java.util.Arrays;
 import java.util.Random;
 
-class Quicksort {
+public class Quicksort {
 
-    static final int[] ARR0 = {8};
-    static final int[] ARR1 = {8, 6};
-    static final int[] ARR2 = {8, 6, 2, 4, 5, 8, 9};
-    static final int[] ARR3 = {6, 43, 48, 18, 62, 29, 26, 3, 22, 13, 17, 56, 90};
-    static final int[] ARR4 = {36, 72, 98, 98, 9, 60, 18, 60, 62, 74, 45, 62, 15, 55, 53, 100, 15, 21, 71, 48, 21, 43};
+    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR3 = {7};
+    private static final int[] ARR4 = {};
 
     void quicksort(int[] A) {
         quicksort(A, 0, A.length - 1);

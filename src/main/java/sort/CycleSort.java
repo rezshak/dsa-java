@@ -1,6 +1,11 @@
 package main.java.sort;
 
-class CycleSort {
+public class CycleSort {
+
+    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR3 = {7};
+    private static final int[] ARR4 = {};
 
     void cycleSort(int[] A) {
 
@@ -57,16 +62,9 @@ class CycleSort {
     }
 
     public static void main(String[] args) {
-
-        int[] arr1 = {12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8};
-        int[] arr2 = {2, 1, 5, 2, 9, 1, 2, 3, 3, 4, 4, 5, 6, 7, 8};
-
         CycleSort cs = new CycleSort();
-        cs.cycleSort(arr1);
-        cs.cycleSort(arr2);
-
-        System.out.println(java.util.Arrays.toString(arr1));
-        System.out.println(java.util.Arrays.toString(arr2));
+        cs.cycleSort(ARR2);
+        System.out.println(java.util.Arrays.toString(ARR2));
     }
 
 }

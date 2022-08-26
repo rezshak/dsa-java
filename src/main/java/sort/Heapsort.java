@@ -2,7 +2,12 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-class Heapsort {
+public class Heapsort {
+
+    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
+    private static final int[] ARR3 = {7};
+    private static final int[] ARR4 = {};
 
     void heapsort(int[] A) {
         int len = A.length;
@@ -43,11 +48,10 @@ class Heapsort {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {5, 12, 9, 1, 7, 7, 10};
         Heapsort hs = new Heapsort();
-        System.out.println("Orig: " + Arrays.toString(arr1));
-        hs.heapsort(arr1);
-        System.out.println("Sorted: " + Arrays.toString(arr1));
+        System.out.println("Orig: " + Arrays.toString(ARR2));
+        hs.heapsort(ARR2);
+        System.out.println("Sorted: " + Arrays.toString(ARR2));
     }
 
     static void swap(int[] A, int i, int j) {

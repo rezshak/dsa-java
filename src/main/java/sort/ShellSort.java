@@ -2,7 +2,7 @@ package main.java.sort;
 
 import java.util.Arrays;
 
-class ShellSort {
+public class ShellSort {
 
     // Rearrange elements at each len/2, len/4, len/8, ... intervals
     void shellSort(int[] A) {
