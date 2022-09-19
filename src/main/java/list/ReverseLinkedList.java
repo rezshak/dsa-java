@@ -18,6 +18,7 @@ class Node {
 public class ReverseLinkedList {
 
     static Node reverseList(Node head) {
+        if (head == null || head.next == null) return head;
         Node prev = null, curr = head;
         while (curr != null) {
             Node next = curr.next;
@@ -26,6 +27,14 @@ public class ReverseLinkedList {
             curr = next;
         }
         return prev;
+    }
+
+    static Node reverseListRecursive(Node head) {
+        if (head == null || head.next == null) return head;
+        Node reversedList = reverseListRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return reversedList;
     }
 
     static void printList(Node head) {
@@ -44,7 +53,6 @@ public class ReverseLinkedList {
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
-        head.next.next.next.next.next = new Node(6);
         printList(head);
         head = reverseList(head);
         printList(head);
