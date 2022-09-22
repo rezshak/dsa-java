@@ -31,10 +31,10 @@ public class ReverseLinkedList {
 
     static Node reverseListRecursive(Node head) {
         if (head == null || head.next == null) return head;
-        Node reversedList = reverseListRecursive(head.next);
+        Node reversedListHead = reverseListRecursive(head.next);
         head.next.next = head;
         head.next = null;
-        return reversedList;
+        return reversedListHead;
     }
 
     static void printList(Node head) {
