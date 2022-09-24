@@ -50,7 +50,7 @@ class Fibonacci {
     int fibonacciRecursiveDynamic(int n) {
         Map<Integer, Integer> cache = new HashMap<>();
         if (n == 0 || n == 1) return n;
-        cache.put(n, fibonacciRecursive(n - 2) + fibonacciRecursive(n - 1));
+        cache.put(n, fibonacciRecursiveDynamic(n - 2) + fibonacciRecursiveDynamic(n - 1));
         return cache.get(n);
     }
 
