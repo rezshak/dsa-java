@@ -16,37 +16,37 @@ public class Quicksort {
 
     void quicksort(int[] A, int left, int right) {
         if (left < right) {
-            int pivot = hoarePartition(A, left, right);
-            quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot - 1
-            quicksort(A, pivot + 1, right);
+            int boundary = hoarePartition(A, left, right);
+            quicksort(A, left, boundary); // hoare: pivot, lomuto: boundary - 1
+            quicksort(A, boundary + 1, right);
         }
     }
 
     int lomutoPartition(int[] A, int left, int right) {
         int randIdx = new Random().nextInt(right - left) + left;
         swap(A, randIdx, right);
-        int key = A[right];
-        int pivot = left - 1;
+        int pivot = A[right];
+        int boundary = left - 1;
         for (int i = left; i <= right; i++) {
-            if (A[i] <= key) {
-                pivot++;
-                swap(A, i, pivot);
+            if (A[i] <= pivot) {
+                boundary++;
+                swap(A, i, boundary);
             }
         }
-        return pivot;
+        return boundary;
     }
 
     int hoarePartition(int[] A, int left, int right) {
         int mid = left + (right - left) / 2;
-        int key = A[mid];
+        int pivot = A[mid];
         int i = left - 1, j = right + 1;
         while (true) {
             do {
                 i++;
-            } while (A[i] < key);
+            } while (A[i] < pivot);
             do {
                 j--;
-            } while (A[j] > key);
+            } while (A[j] > pivot);
             if (i < j) swap(A, i, j);
             else return j;
         }
