@@ -25,15 +25,15 @@ public class Quicksort {
     int lomutoPartition(int[] A, int left, int right) {
         int randIdx = new Random().nextInt(right - left) + left;
         swap(A, randIdx, right);
-        int pivot = A[right];
-        int boundary = left - 1;
+        int key = A[right];
+        int pivot = left - 1;
         for (int i = left; i <= right; i++) {
-            if (A[i] <= pivot) {
-                boundary++;
-                swap(A, i, boundary);
+            if (A[i] <= key) {
+                pivot++;
+                swap(A, i, pivot);
             }
         }
-        return boundary;
+        return pivot;
     }
 
     int hoarePartition(int[] A, int left, int right) {
