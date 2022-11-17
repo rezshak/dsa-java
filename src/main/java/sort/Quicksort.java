@@ -15,10 +15,11 @@ public class Quicksort {
     }
 
     void quicksort(int[] A, int left, int right) {
-        if (left >= right) return;
-        int pivot = hoarePartition(A, left, right);
-        quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot - 1
-        quicksort(A, pivot + 1, right);
+        if (left < right) {
+            int pivot = hoarePartition(A, left, right);
+            quicksort(A, left, pivot); // hoare: pivot, lomuto: pivot - 1
+            quicksort(A, pivot + 1, right);
+        }
     }
 
     int lomutoPartition(int[] A, int left, int right) {
@@ -37,15 +38,15 @@ public class Quicksort {
 
     int hoarePartition(int[] A, int left, int right) {
         int mid = left + (right - left) / 2;
-        int pivot = A[mid];
+        int key = A[mid];
         int i = left - 1, j = right + 1;
         while (true) {
             do {
                 i++;
-            } while (A[i] < pivot);
+            } while (A[i] < key);
             do {
                 j--;
-            } while (A[j] > pivot);
+            } while (A[j] > key);
             if (i < j) swap(A, i, j);
             else return j;
         }
