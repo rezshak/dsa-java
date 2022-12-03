@@ -9,7 +9,7 @@ public class InsertionSort {
     private static final int[] ARR3 = {7};
     private static final int[] ARR4 = {};
 
-    void insertionSort(int A[]) {
+    void insertionSort(int[] A) {
         for (int i = 1; i < A.length; i++) {
             int key = A[i];
             int j = i - 1;
