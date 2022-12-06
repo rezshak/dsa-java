@@ -1,13 +1,7 @@
 package main.java.stack;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.EmptyStackException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class Stack {
 
@@ -85,47 +79,6 @@ class Stack {
         System.out.println("pop: " + st.pop());
         st.print();
 
-    }
-
-    Stack st = null;
-
-    @BeforeEach
-    public void setup() {
-        st = new Stack();
-    }
-
-    @Test
-    public void push1() {
-        assertEquals(0, st.size());
-        st.push(7);
-        st.push(3);
-        assertEquals(2, st.size());
-    }
-
-    @Test
-    public void peek1() {
-        assertEquals(0, st.size());
-        st.push(7);
-        st.push(3);
-        assertEquals(2, st.size());
-        assertEquals(3, st.peek());
-        assertEquals(2, st.size());
-    }
-
-    @Test
-    public void pop1() {
-        st.push(7);
-        st.push(3);
-        assertEquals(3, st.pop());
-        assertEquals(1, st.size());
-    }
-
-    @Test
-    public void pop2_emptyStack() {
-        assertEquals(0, st.size());
-        assertThrows(EmptyStackException.class, () -> {
-            st.pop();
-        });
     }
 
 }

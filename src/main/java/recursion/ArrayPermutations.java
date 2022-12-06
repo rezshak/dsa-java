@@ -1,12 +1,8 @@
 package main.java.recursion;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ArrayPermutations {
 
@@ -38,17 +34,6 @@ class ArrayPermutations {
         Integer temp = array.get(i);
         array.set(i, array.get(j));
         array.set(j, temp);
-    }
-
-    @Test
-    public void getPermutations() {
-        List<Integer> array = Arrays.asList(1, 2, 3);
-        List<List<Integer>> permutations = getPermutations(array);
-        assertTrue(permutations.contains(List.of(1, 2, 3)));
-        assertTrue(permutations.contains(List.of(1, 3, 2)));
-        assertTrue(permutations.contains(List.of(2, 1, 3)));
-        assertTrue(permutations.contains(List.of(3, 2, 1)));
-        assertTrue(permutations.contains(List.of(3, 1, 2)));
     }
 
 }

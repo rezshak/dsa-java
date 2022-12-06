@@ -1,10 +1,6 @@
 package main.java.array;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SlidingWindow {
 
@@ -22,16 +18,6 @@ class SlidingWindow {
             seen.put(ch, right);
         }
         return result;
-    }
-
-    @Test
-    public void givenString_whenGetUniqueCharacterSubstringCalled_thenResultFoundAsExpected() {
-        assertEquals("", longestUniqueSubstring(""));
-        assertEquals("A", longestUniqueSubstring("A"));
-        assertEquals("ABCDEF", longestUniqueSubstring("AABCDEF"));
-        assertEquals("ABCDEF", longestUniqueSubstring("ABCDEFF"));
-        assertEquals("NGISAWE", longestUniqueSubstring("CODINGISAWESOME"));
-        assertEquals("be coding", longestUniqueSubstring("always be coding"));
     }
 
 }

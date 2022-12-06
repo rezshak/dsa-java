@@ -1,11 +1,7 @@
 package main.java.string;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DnaPalindrome {
 
@@ -65,14 +61,6 @@ public class DnaPalindrome {
         complement.put('C', 'G');
         complement.put('G', 'C');
         return complement;
-    }
-
-
-    @Test
-    public void hasDnaPalindrome_seq1_shouldPass() {
-        DnaPalindrome dp = new DnaPalindrome();
-        String seq1 = "ATCGAT";
-        assertTrue(dp.isDnaPalindrome(seq1));
     }
 
 }
