@@ -10,25 +10,47 @@ public class MergeSort {
     private static final int[] ARR4 = {};
 
     void mergeSort(int[] A) {
-        if (A.length < 2) return;
-        int len = A.length, mid = len / 2;
-        int[] A1 = new int[mid];
-        int[] A2 = new int[len - mid];
-        System.arraycopy(A, 0, A1, 0, mid);
-        System.arraycopy(A, mid, A2, 0, len - mid);
-        mergeSort(A1);
-        mergeSort(A2);
-        merge(A, A1, A2);
+        mergeSort(A, 0, A.length - 1);
     }
 
-    void merge(int[] A, int[] A1, int[] A2) {
-        int len1 = A1.length, len2 = A2.length;
-        int idx = 0, idx1 = 0, idx2 = 0;
-        while (idx1 < len1 && idx2 < len2) {
-            A[idx++] = A1[idx1] <= A2[idx2] ? A1[idx1++] : A2[idx2++];
+    void mergeSort(int[] nums, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            mergeSort(nums, left, mid);
+            mergeSort(nums, mid + 1, right);
+            merge(nums, left, mid, right);
         }
-        while (idx1 < len1) A[idx++] = A1[idx1++];
-        while (idx2 < len2) A[idx++] = A2[idx2++];
+    }
+
+    void merge(int[] nums, int left, int mid, int right) {
+        int len1 = mid - left + 1;
+        int len2 = right - mid;
+
+        int[] nums1 = new int[len1];
+        int[] nums2 = new int[len2];
+
+        for (int i = 0; i < len1; i++) {
+            nums1[i] = nums[left + i];
+        }
+
+        for (int j = 0; j < len2; j++) {
+            nums2[j] = nums[mid + 1 + j];
+        }
+
+        int idx1 = 0, idx2 = 0;
+        int idx = left;
+
+        while (idx1 < len1 && idx2 < len2) {
+            nums[idx++] = nums1[idx1] <= nums2[idx2] ? nums1[idx1++] : nums2[idx2++];
+        }
+
+        while (idx1 < len1) {
+            nums[idx++] = nums1[idx1++];
+        }
+
+        while (idx2 < len2) {
+            nums[idx++] = nums2[idx2++];
+        }
     }
 
     public static void main(String... args) {
