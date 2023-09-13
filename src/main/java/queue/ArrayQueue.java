@@ -1,5 +1,7 @@
 package main.java.queue;
 
+import java.util.Arrays;
+
 class ArrayQueue {
 
     static final int INITIAL_CAPACITY = 5;
@@ -59,8 +61,8 @@ class ArrayQueue {
     public String toString() {
         var sb = new StringBuilder();
         sb.append("[ ");
-        for (int i = front; i < count; i++) {
-            sb.append(items[i]).append(" ");
+        for (int i = 0, curr = front; i < count; i++, curr++) {
+            sb.append(items[curr]).append(" ");
         }
         sb.append("]");
         return sb.toString();
@@ -71,6 +73,8 @@ class ArrayQueue {
         aq.enqueue(3);
         aq.enqueue(4);
         aq.enqueue(5);
+        System.out.println(aq);
+        var item = aq.dequeue();
         System.out.println(aq);
     }
 
