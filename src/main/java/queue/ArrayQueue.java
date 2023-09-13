@@ -1,7 +1,5 @@
 package main.java.queue;
 
-import java.util.Arrays;
-
 class ArrayQueue {
 
     static final int INITIAL_CAPACITY = 5;
@@ -19,28 +17,23 @@ class ArrayQueue {
     }
 
     void enqueue(int item) {
-        if (isFull()) throw new RuntimeException("Queue is full");
-
+        resizeIfNeeded();
         items[rear] = item;
         rear = (rear + 1) % items.length;
         count++;
     }
 
     int dequeue() {
-        if (isEmpty()) throw new RuntimeException("Queue is empty");
-
+        if (isEmpty()) throw new IllegalStateException("Array queue is empty");
         int item = items[front];
         items[front] = 0;
         front = (front + 1) % items.length;
         count--;
-
         return item;
     }
 
     int peek() {
-        if (isEmpty())
-            throw new IllegalStateException();
-
+        if (isEmpty()) throw new IllegalStateException("Array queue is empty");
         return items[front];
     }
 
@@ -48,13 +41,37 @@ class ArrayQueue {
         return count == 0;
     }
 
-    boolean isFull() {
-        return count == items.length;
+    void resizeIfNeeded() {
+        if (count == items.length) {
+            int[] items2 = new int[items.length * 2];
+            int curr = front;
+            for (int i = 0; i < items.length; i++) {
+                items2[i] = items[curr];
+                curr = (curr + 1) % items.length;
+            }
+            front = 0;
+            rear = items.length;
+            items = items2;
+        }
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(items);
+        var sb = new StringBuilder();
+        sb.append("[ ");
+        for (int i = front; i < count; i++) {
+            sb.append(items[i]).append(" ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        var aq = new ArrayQueue(2);
+        aq.enqueue(3);
+        aq.enqueue(4);
+        aq.enqueue(5);
+        System.out.println(aq);
     }
 
 }
