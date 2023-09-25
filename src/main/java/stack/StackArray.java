@@ -3,17 +3,17 @@ package main.java.stack;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-class Stack {
+class StackArray {
 
     static final int CAPACITY = 10;
     int[] items;
     int count;
 
-    public Stack() {
+    public StackArray() {
         this(CAPACITY);
     }
 
-    Stack(int capacity) {
+    StackArray(int capacity) {
         items = new int[capacity];
         count = 0;
     }
@@ -68,7 +68,7 @@ class Stack {
     }
 
     public static void main(String[] args) {
-        Stack st = new Stack();
+        StackArray st = new StackArray();
         st.push(7);
         System.out.println(st.pop());
         st.push(3);
