@@ -1,17 +1,17 @@
 package main.java.tree;
 
-class BinarySearchTree {
+public class BinarySearchTree {
 
     static class Node {
-        int value;
-        Node left, right;
-        Node(int value) {
-            this.value = value;
+        private int val;
+        private Node left, right;
+        public Node(int val) {
+            this.val = val;
             left = right = null;
         }
         @Override
         public String toString() {
-            return String.valueOf(value);
+            return String.valueOf(val);
         }
     }
 
@@ -30,7 +30,7 @@ class BinarySearchTree {
             node = new Node(value);
             return node;
         }
-        if (value < node.value) {
+        if (value < node.val) {
             node.left = insertHelper(node.left, value);
         } else {
             node.right = insertHelper(node.right, value);
@@ -39,22 +39,22 @@ class BinarySearchTree {
     }
 
     void insertIterative(int value) {
-        Node newNode = new Node(value);
+        var node = new Node(value);
         if (root == null) {
-            root = newNode;
+            root = node;
             return;
         }
-        Node curr = root;
+        var curr = root;
         while (true) {
-            if (value < curr.value) {
+            if (value < curr.val) {
                 if (curr.left == null) {
-                    curr.left = newNode;
+                    curr.left = node;
                     break;
                 }
                 curr = curr.left;
             } else {
                 if (curr.right == null) {
-                    curr.right = newNode;
+                    curr.right = node;
                     break;
                 }
                 curr = curr.right;
@@ -65,17 +65,19 @@ class BinarySearchTree {
     boolean find(int value) {
         return findHelper(root, value);
     }
+
     boolean findHelper(Node node, int target) {
         if (node == null) return false;
-        if (target == node.value) return true;
-        if (target < node.value) return findHelper(node.left, target);
+        if (target == node.val) return true;
+        if (target < node.val) return findHelper(node.left, target);
         return findHelper(node.right, target);
     }
+
     boolean findIterative(int target) {
         Node curr = root;
         while (curr != null) {
-            if (target == curr.value) return true;
-            if (target < curr.value) curr = curr.left;
+            if (target == curr.val) return true;
+            if (target < curr.val) curr = curr.left;
             else curr = curr.right;
         }
         return false;
@@ -84,13 +86,14 @@ class BinarySearchTree {
     void deleteValue(int value) {
         root = deleteValue(root, value);
     }
+
     Node deleteValue(Node root, int value) {
         if (root == null) return null;
 
         // Find the node to be deleted
-        if (value < root.value) {
+        if (value < root.val) {
             root.left = deleteValue(root.left, value);
-        } else if (value > root.value) {
+        } else if (value > root.val) {
             root.right = deleteValue(root.right, value);
         } else {
             // If the node is with only one child or no child
@@ -99,10 +102,10 @@ class BinarySearchTree {
 
             // If the node has two children
             // Place the inorder successor in position of the node to be deleted
-            root.value = min(root.right);
+            root.val = min(root.right);
 
             // Delete the inorder successor
-            root.right = deleteValue(root.right, root.value);
+            root.right = deleteValue(root.right, root.val);
         }
 
         return root;
@@ -124,14 +127,14 @@ class BinarySearchTree {
 
     int min(Node node) {
         if (node == null) return 0;
-        if (node.left == null) return node.value;
+        if (node.left == null) return node.val;
         return min(node.left);
     }
 
     int minIterative(Node node) {
-        int min = node.value;
+        int min = node.val;
         while (node.left != null) {
-            min = node.left.value;
+            min = node.left.val;
             node = node.left;
         }
         return min;
@@ -163,7 +166,7 @@ class BinarySearchTree {
 
     public static void main(String[] args) {
 
-        BinarySearchTree bst = new BinarySearchTree();
+        var bst = new BinarySearchTree();
 
         bst.insert(17);
         bst.insert(11);
@@ -193,4 +196,5 @@ class BinarySearchTree {
         System.out.println("  Right: " + node.right);
         System.out.println("  Height: " + height(node));
     }
+
 }
