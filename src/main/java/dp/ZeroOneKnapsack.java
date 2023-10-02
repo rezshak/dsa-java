@@ -28,8 +28,8 @@ public class ZeroOneKnapsack {
 
         var memo = new int[n + 1][capacity + 1];
 
-        for (int i = 0; i <= n; i++) {
-            Arrays.fill(memo[i], -1);
+        for (var row : memo) {
+            Arrays.fill(row, -1);
         }
 
         return knapsackMemoHelper(values, weights, capacity, n, memo);
@@ -46,12 +46,12 @@ public class ZeroOneKnapsack {
         }
 
         if (weights[n - 1] > capacity) {
-            memo[n - 1][capacity] = knapsackRec(weights, values, capacity, n - 1);
+            memo[n - 1][capacity] = knapsackMemoHelper(weights, values, capacity, n - 1, memo);
             return memo[n - 1][capacity];
         }
 
-        var include = values[n - 1] + knapsackRec(weights, values, capacity - weights[n - 1], n - 1);
-        var exclude = knapsackRec(weights, values, capacity, n - 1);
+        var include = values[n - 1] + knapsackMemoHelper(weights, values, capacity - weights[n - 1], n - 1, memo);
+        var exclude = knapsackMemoHelper(weights, values, capacity, n - 1, memo);
         memo[n - 1][capacity] = Math.max(include, exclude);
 
         return memo[n - 1][capacity];
