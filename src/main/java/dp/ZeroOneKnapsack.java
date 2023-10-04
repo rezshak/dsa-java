@@ -64,16 +64,16 @@ public class ZeroOneKnapsack {
         var dp = new int[n + 1][capacity + 1];
 
         for (var i = 0; i <= n; i++) {
-            for (var j = 0; j <= capacity; j++) {
-                if (i == 0 || j == 0) {
-                    dp[i][j] = 0;
-                } else if (weights[i - 1] > j) {
-                    dp[i][j] = dp[i - 1][j];
+            for (var w = 0; w <= capacity; w++) {
+                if (i == 0 || w == 0) {
+                    dp[i][w] = 0;
+                } else if (weights[i - 1] > w) {
+                    dp[i][w] = dp[i - 1][w];
                 } else {
                     // weights[n - 1] <= capacity
-                    var include = values[i - 1] + dp[i - 1][j - weights[i - 1]];
-                    var exclude = dp[i - 1][j];
-                    dp[i][j] = Math.max(include, exclude);
+                    var include = values[i - 1] + dp[i - 1][w - weights[i - 1]];
+                    var exclude = dp[i - 1][w];
+                    dp[i][w] = Math.max(include, exclude);
                 }
             }
         }
@@ -86,8 +86,8 @@ public class ZeroOneKnapsack {
         var dp = new int[capacity + 1];
 
         for (var i = 0; i < n; i++) {
-            for (var j = capacity; j >= weights[i]; j--) {
-                dp[j] = Math.max(values[i] + dp[j - weights[i]], dp[j]);
+            for (var w = capacity; w >= weights[i]; w--) {
+                dp[w] = Math.max(values[i] + dp[w - weights[i]], dp[w]);
             }
         }
 
