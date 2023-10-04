@@ -42,20 +42,20 @@ public class ZeroOneKnapsack {
             return 0;
         }
 
-        if (memo[n - 1][capacity] != -1) {
-            return memo[n - 1][capacity];
+        if (memo[n][capacity] != -1) {
+            return memo[n][capacity];
         }
 
         if (weights[n - 1] > capacity) {
-            memo[n - 1][capacity] = knapsackMemoHelper(weights, values, capacity, n - 1, memo);
-            return memo[n - 1][capacity];
+            memo[n][capacity] = knapsackMemoHelper(weights, values, capacity, n - 1, memo);
+            return memo[n][capacity];
         }
 
         var include = values[n - 1] + knapsackMemoHelper(weights, values, capacity - weights[n - 1], n - 1, memo);
         var exclude = knapsackMemoHelper(weights, values, capacity, n - 1, memo);
-        memo[n - 1][capacity] = Math.max(include, exclude);
+        memo[n][capacity] = Math.max(include, exclude);
 
-        return memo[n - 1][capacity];
+        return memo[n][capacity];
     }
 
     // https://www.youtube.com/watch?v=WNkqbqyvR_0
