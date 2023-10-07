@@ -86,7 +86,7 @@ public class CycleSort {
         cs.cycleSort(ARR2);
         System.out.println(Arrays.toString(ARR2));
 
-        cs.cycleSort(ARR1);
+        cs.cycleSort2(ARR1);
         System.out.println(Arrays.toString(ARR1));
     }
 
