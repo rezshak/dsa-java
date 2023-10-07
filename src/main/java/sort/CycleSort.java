@@ -1,8 +1,10 @@
 package main.java.sort;
 
+import java.util.Arrays;
+
 public class CycleSort {
 
-    private static final int[] ARR1 = {1, 3, 2};
+    private static final int[] ARR1 = {4, 3, 2, 1};
     private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
     private static final int[] ARR3 = {7};
     private static final int[] ARR4 = {};
@@ -61,10 +63,31 @@ public class CycleSort {
         }
     }
 
+    void cycleSort2(int[] arr) {
+        int n = arr.length;
+        int i = 0;
+
+        while (i < n) {
+            if (arr[i] != i + 1) {
+                // The element is not in its correct position
+                // Swap arr[i] with the element at index arr[i] - 1
+                int temp = arr[i];
+                arr[i] = arr[temp - 1];
+                arr[temp - 1] = temp;
+            } else {
+                // The element is already in its correct position
+                i++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        CycleSort cs = new CycleSort();
+        var cs = new CycleSort();
         cs.cycleSort(ARR2);
-        System.out.println(java.util.Arrays.toString(ARR2));
+        System.out.println(Arrays.toString(ARR2));
+
+        cs.cycleSort(ARR1);
+        System.out.println(Arrays.toString(ARR1));
     }
 
 }
