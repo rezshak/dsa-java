@@ -7,14 +7,14 @@ import java.util.Queue;
 
 class TopologicalSort {
 
-    int v; // number of vertices
+    int nv; // number of vertices
     List<List<Integer>> adj; // adjacency list
 
-    TopologicalSort(int v) {
-        this.v = v;
-        adj = new ArrayList<>(v);
-        for (int i = 0; i < v; ++i) {
-            adj.add(new LinkedList<Integer>());
+    TopologicalSort(int nv) {
+        this.nv = nv;
+        adj = new ArrayList<>(nv);
+        for (int i = 0; i < nv; ++i) {
+            adj.add(new LinkedList<>());
         }
     }
 
@@ -23,15 +23,15 @@ class TopologicalSort {
     }
 
     void topologicalSort() {
-        int[] indegree = new int[v];
-        for (int i = 0; i < v; i++) {
+        int[] indegree = new int[nv];
+        for (int i = 0; i < nv; i++) {
             for (int vertex : adj.get(i)) {
                 indegree[vertex]++;
             }
         }
 
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < v; i++) {
+        for (int i = 0; i < nv; i++) {
             if (indegree[i] == 0) {
                 queue.add(i);
             }
@@ -51,7 +51,7 @@ class TopologicalSort {
             visited++;
         }
 
-        if (visited != v) {
+        if (visited != nv) {
             System.out.println("There exists a cycle in the graph");
             return;
         }
