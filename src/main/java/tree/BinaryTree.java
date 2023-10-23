@@ -1,146 +1,130 @@
 package main.java.tree;
 
+import com.sun.source.tree.Tree;
+
+import java.util.LinkedList;
+
 class BinaryTree {
 
-    static class Node {
-        int value;
-        Node left, right;
-        Node(int value) {
-            this.value = value;
-            left = right = null;
+    int heightRecursive(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-        @Override
-        public String toString() {
-            return String.valueOf(value);
+        var leftHeight = heightRecursive(root.left);
+        var rightHeight = heightRecursive(root.right);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    int heightIterative(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-    }
-
-    Node root;
-
-    BinaryTree() {
-        root = null;
-    }
-
-    int height() {
-        return height(root);
-    }
-    private int height(Node node) {
-        if (node == null) return -1;
-        if (node.left == null && node.right == null) return 0;
-        return 1 + Math.max(height(node.left), height(node.right));
-    }
-
-    // nlr
-    void preorder(Node node) {
-        if (node == null) return;
-        print(node);
-        preorder(node.left);
-        preorder(node.right);
-    }
-
-    // lnr
-    void inorder(Node node) {
-        if (node == null) return;
-        inorder(node.left);
-        print(node);
-        inorder(node.right);
-
-    }
-
-    // lrn
-    void postorder(Node node) {
-        if (node == null) return;
-        postorder(node.left);
-        postorder(node.right);
-        print(node);
+        var queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        var height = 0;
+        while (!queue.isEmpty()) {
+            var size = queue.size();
+            for (var i = 0; i < size; i++) {
+                var node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null)
+                    queue.add(node.right);
+            }
+            height++;
+        }
+        return height;
     }
 
     // Every parent node/internal node has either two or no children
-    boolean isFullBinaryTree(Node node) {
-        if (node == null) return true;
-        if (node.left == null && node.right == null) return true;
-        if (node.left != null && node.right != null) {
-            return isFullBinaryTree(node.left) && isFullBinaryTree(node.right);
+    boolean isFullBinaryTree(TreeNode treeNode) {
+        if (treeNode == null) return true;
+        if (treeNode.left == null && treeNode.right == null) return true;
+        if (treeNode.left != null && treeNode.right != null) {
+            return isFullBinaryTree(treeNode.left) && isFullBinaryTree(treeNode.right);
         }
         return false;
     }
 
-    int perfectBinaryTreeDepth(Node node) {
+    int perfectBinaryTreeDepth(TreeNode treeNode) {
         int d = 0;
-        while (node != null) {
+        while (treeNode != null) {
             d++;
-            node = node.left;
+            treeNode = treeNode.left;
         }
         return d;
     }
 
     // Every internal node has exactly two child nodes,
     // and all the leaf nodes are at the same level
-    boolean isPerfectBinaryTree(Node node, int depth, int level) {
-        if (node == null) return true;
-        if (node.left == null && node.right == null)
+    boolean isPerfectBinaryTree(TreeNode treeNode, int depth, int level) {
+        if (treeNode == null) return true;
+        if (treeNode.left == null && treeNode.right == null)
             return depth == level + 1;
-        return isPerfectBinaryTree(node.left, depth, level + 1) &&
-                isPerfectBinaryTree(node.right, depth, level + 1);
+        return isPerfectBinaryTree(treeNode.left, depth, level + 1) &&
+                isPerfectBinaryTree(treeNode.right, depth, level + 1);
     }
 
-    boolean isPerfectBinaryTree(Node root) {
+    boolean isPerfectBinaryTree(TreeNode root) {
         int depth = perfectBinaryTreeDepth(root);
         return isPerfectBinaryTree(root, depth, 0);
     }
 
-
-    int countNumNodes(Node root) {
+    int countNumNodes(TreeNode root) {
         if (root == null) return 0;
         return countNumNodes(root.left) + countNumNodes(root.right) + 1;
     }
 
-    boolean isCompleteBinaryTree(Node root) {
+    boolean isCompleteBinaryTree(TreeNode root) {
         int nodeCount = countNumNodes(root);
         return isCompleteBinaryTree(root, 0, nodeCount);
     }
 
-    boolean isCompleteBinaryTree(Node root, int index, int numberNodes) {
+    boolean isCompleteBinaryTree(TreeNode root, int index, int numberNodes) {
         if (root == null) return true;
         if (index >= numberNodes) return false;
         return isCompleteBinaryTree(root.left, 2 * index + 1, numberNodes) &&
                 isCompleteBinaryTree(root.right, 2 * index + 2, numberNodes);
     }
 
-    public static void main(String[] args) {
-
-        BinaryTree bt = new BinaryTree();
-        bt.root = new Node(1);
-
-        bt.root.left = new Node(12);
-        bt.root.right = new Node(9);
-
-        bt.root.left.left = new Node(5);
-        bt.root.left.right = new Node(6);
-
-        bt.root.right.left = new Node(14);
-        bt.root.right.right = new Node(15);
-
-        System.out.println("\nInorder traversal");
-        bt.inorder(bt.root);
-
-        System.out.println("\nPreorder traversal");
-        bt.preorder(bt.root);
-
-        System.out.println("\nPostorder traversal");
-        bt.postorder(bt.root);
-
-        System.out.println("Full: " + bt.isFullBinaryTree(bt.root));
-        System.out.println("Perfect: " + bt.isPerfectBinaryTree(bt.root));
-        System.out.println("Complete: " + bt.isCompleteBinaryTree(bt.root));
+    void printBinaryTree(TreeNode root) {
+        var queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            var node = queue.poll();
+            System.out.print(node.val + " ");
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
     }
 
-    private void print(Node node) {
-        System.out.println("Root: " + root);
-        System.out.println("  Curr: " + node);
-        System.out.println("  Left: " + node.left);
-        System.out.println("  Right: " + node.right);
-        System.out.println("  Height: " + height(node));
+    public static void main(String[] args) {
+
+        var bt = new BinaryTree();
+        var root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(7);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(9);
+
+        System.out.print("Height recursive: ");
+        System.out.println(bt.heightRecursive(root));
+
+        System.out.print("Height iterative: ");
+        System.out.println(bt.heightRecursive(root));
+
+        System.out.println();
+
+        System.out.println("Full: " + bt.isFullBinaryTree(root));
+        System.out.println("Perfect: " + bt.isPerfectBinaryTree(root));
+        System.out.println("Complete: " + bt.isCompleteBinaryTree(root));
     }
 
 }

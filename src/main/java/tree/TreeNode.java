@@ -1,10 +1,11 @@
 package main.java.tree;
 
-class Node {
-    int val;
-    Node left, right;
+class TreeNode {
 
-    Node(int val) {
+    final int val;
+    TreeNode left, right;
+
+    TreeNode(int val) {
         this.val = val;
         left = right = null;
     }
