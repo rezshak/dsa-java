@@ -1,11 +1,11 @@
 package main.java.graph;
 
-class AdjacencyMatrixGraph {
+public class AdjMatrixGraph {
 
     final int numVertices;
     final boolean[][] adjMatrix;
 
-    AdjacencyMatrixGraph(int numVertices) {
+    AdjMatrixGraph(int numVertices) {
         this.numVertices = numVertices;
         adjMatrix = new boolean[numVertices][numVertices];
     }
@@ -34,7 +34,7 @@ class AdjacencyMatrixGraph {
     }
 
     public static void main(String[] args) {
-        AdjacencyMatrixGraph g = new AdjacencyMatrixGraph(4);
+        AdjMatrixGraph g = new AdjMatrixGraph(4);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 2);
