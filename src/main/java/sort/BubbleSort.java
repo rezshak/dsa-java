@@ -1,17 +1,16 @@
 package main.java.sort;
 
+import static main.java.sort.Fixtures.NUMS1;
+import static main.java.sort.Fixtures.NUMS2;
+import static main.java.sort.Fixtures.swap;
+
 import java.util.Arrays;
 
-public class BubbleSort {
-
-    private static final int[] ARR1 = {1, 3, 2};
-    private static final int[] ARR2 = {8, 6, 2, 4, 5, 8};
-    private static final int[] ARR3 = {7};
-    private static final int[] ARR4 = {};
+final class BubbleSort {
 
     void bubbleSort(int[] A) {
-        int lastSortedIndex = A.length - 1;
-        boolean sorted = false;
+        var lastSortedIndex = A.length - 1;
+        var sorted = false;
         while (!sorted) {
             sorted = true;
             for (int i = 0; i < lastSortedIndex; i++) {
@@ -25,16 +24,11 @@ public class BubbleSort {
     }
 
     public static void main(String... args) {
-        BubbleSort bs = new BubbleSort();
-        bs.bubbleSort(ARR2);
-        System.out.println(Arrays.toString(ARR2));
-    }
-
-    static void swap(int[] A, int i, int j) {
-        if (i == j) return;
-        int temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
+        var bs = new BubbleSort();
+        bs.bubbleSort(NUMS1);
+        bs.bubbleSort(NUMS2);
+        System.out.println(Arrays.toString(NUMS1));
+        System.out.println(Arrays.toString(NUMS2));
     }
 
 }
