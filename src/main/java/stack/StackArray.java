@@ -3,82 +3,87 @@ package main.java.stack;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-class StackArray {
+public class StackArray {
 
-    static final int CAPACITY = 10;
-    int[] items;
-    int count;
+    private static final int CAP = 10;
+
+    private int[] items;
+    private int top;
 
     public StackArray() {
-        this(CAPACITY);
+        this(CAP);
     }
 
-    StackArray(int capacity) {
-        items = new int[capacity];
-        count = 0;
+    public StackArray(int cap) {
+        items = new int[cap];
+        top = 0;
     }
 
-    void push(int n) {
-        checkIfFull();
-        items[count++] = n;
+    public void push(int item) {
+        resizeIfNeeded();
+        items[top++] = item;
     }
 
-    int pop() {
+    public int pop() {
         checkIfEmpty();
-        int n = items[--count];
-        items[count] = 0;
-        return n;
+        int item = items[--top];
+        items[top] = 0;
+        return item;
     }
 
-    int peek() {
-        return items[count - 1];
+    public int peek() {
+        checkIfEmpty();
+        return items[top - 1];
     }
 
-    boolean isEmpty() {
-        return count == 0;
+    public boolean isEmpty() {
+        return top == 0;
     }
 
-    boolean isFull() {
-        return count == items.length;
-    }
-
-    int size() {
-        return count;
-    }
-
-    void print() {
-        System.out.println("-----");
-        for (int i = count - 1; i >= 0; i--)
-            System.out.println("[ " + items[i] + " ]");
+    public int size() {
+        return top;
     }
 
     @Override
     public String toString() {
-        checkIfEmpty();
-        int[] content = Arrays.copyOf(items, count);
-        return Arrays.toString(content);
-    }
-
-    private void checkIfFull() {
-        if (isFull()) throw new StackOverflowError();
+        var sb = new StringBuilder();
+        sb.append("[ ");
+        for (int i = 0; i < top; i++) {
+            sb.append(items[i]).append(" ");
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     private void checkIfEmpty() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+    }
+
+    private void resizeIfNeeded() {
+        if (top >= items.length) {
+            items = Arrays.copyOf(items, items.length * 2);
+        }
     }
 
     public static void main(String[] args) {
-        StackArray st = new StackArray();
-        st.push(7);
-        System.out.println(st.pop());
-        st.push(3);
-        st.push(4);
-        System.out.println("size: " + st.size());
-        System.out.println(st);
-        System.out.println("peek: " + st.peek());
-        System.out.println("pop: " + st.pop());
-        st.print();
-
+        var sa = new StackArray(3);
+        System.out.println(sa);
+        System.out.println("empty: " + sa.isEmpty());
+        System.out.println("size: " + sa.size());
+        sa.push(3);
+        sa.push(4);
+        sa.push(5);
+        System.out.println(sa);
+        System.out.println("empty: " + sa.isEmpty());
+        System.out.println("peek: " + sa.peek());
+        System.out.println("pop: " + sa.pop());
+        System.out.println(sa);
+        System.out.println("size: " + sa.size());
+        sa.push(6);
+        sa.push(7);
+        System.out.println(sa);
     }
 
 }
