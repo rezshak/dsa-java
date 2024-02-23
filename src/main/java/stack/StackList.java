@@ -1,84 +1,81 @@
 package main.java.stack;
 
-class StackList {
+public class StackList {
 
-    private static class Node {
-        int val;
+    private class Node {
+        final int item;
         Node prev;
-        Node(int val) {
-            this.val = val;
+
+        Node(int item) {
+            this.item = item;
             prev = null;
         }
     }
 
-    Node tail;
-    int count;
+    private Node tail;
+    private int count;
 
-    StackList() {
+    public StackList() {
         tail = null;
         count = 0;
     }
 
-    public void push(int val) {
-        Node node = new Node(val);
+    public void push(int item) {
+        Node node = new Node(item);
         node.prev = tail;
         tail = node;
         count++;
     }
 
+    public int pop() {
+        checkIfEmpty();
+        int item = tail.item;
+        tail = tail.prev;
+        return item;
+    }
+
     public int peek() {
         checkIfEmpty();
-        return tail.val;
-    }
-
-    public void pop() {
-        checkIfEmpty();
-        tail = tail.prev;
-        count--;
-    }
-
-    public void printStack() {
-        checkIfEmpty();
-        System.out.println("Stack (top-down):");
-        Node curr = tail;
-        while (curr != null) {
-            System.out.printf("\t %d \n", curr.val);
-            curr = curr.prev;
-        }
-    }
-
-    public boolean isEmpty() {
-        return tail == null;
+        return tail.item;
     }
 
     public int size() {
         return count;
     }
 
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("[ ");
+        Node curr = tail;
+        while (curr != null) {
+            sb.append(curr.item).append(" ");
+            curr = curr.prev;
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     private void checkIfEmpty() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+            throw new RuntimeException("stack list empty");
         }
     }
 
     public static void main(String[] args) {
-
-        var st = new StackList();
-        st.push(11);
-        st.push(22);
-        st.push(33);
-        st.push(44);
-
-        st.printStack();
-
-        System.out.printf("\nTop element is %d\n", st.peek());
-
-        st.pop();
-        st.pop();
-
-        st.printStack();
-
-        System.out.printf("\nTop element is %d\n", st.peek());
+        var sl = new StackList();
+        sl.push(3);
+        sl.push(5);
+        sl.push(7);
+        System.out.println(sl);
+        System.out.println("popped: " + sl.pop());
+        System.out.println("peeked: " + sl.peek());
+        System.out.println(sl);
+        System.out.println("size: " + sl.size());
     }
 
 }

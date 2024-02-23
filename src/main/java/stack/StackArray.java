@@ -1,7 +1,6 @@
 package main.java.stack;
 
 import java.util.Arrays;
-import java.util.EmptyStackException;
 
 public class StackArray {
 
@@ -57,7 +56,7 @@ public class StackArray {
 
     private void checkIfEmpty() {
         if (isEmpty()) {
-            throw new EmptyStackException();
+            throw new RuntimeException("stack array empty");
         }
     }
 
