@@ -1,27 +1,30 @@
 package main.java.list;
 
-class Node {
-    final int data;
-    Node next;
+class ListNode {
+    final int val;
+    ListNode next;
 
-    Node(int data) {
-        this.data = data;
-        this.next = null;
+    ListNode(int val) {
+        this.val = val;
+        next = null;
     }
 
     @Override
     public String toString() {
-        return data + " ";
+        return val + " ";
     }
 }
 
 public class ReverseLinkedList {
 
-    static Node reverseList(Node head) {
-        if (head == null || head.next == null) return head;
-        Node prev = null, curr = head;
+    // 1 -> 2 -> 3 -> 4 -> 5
+    // 5 -> 4 -> 3 -> 2 -> 1
+    static ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode prev = null, curr = head;
         while (curr != null) {
-            Node next = curr.next;
+            ListNode next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
@@ -29,33 +32,69 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    static Node reverseListRecursive(Node head) {
-        if (head == null || head.next == null) return head;
-        Node reversedListHead = reverseListRecursive(head.next);
+    // 1 -> 2 -> 3 -> 4 -> 5
+    // 5 -> 4 -> 3 -> 2 -> 1
+    static ListNode reverseListRec(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode reversedListHead = reverseListRec(head.next);
         head.next.next = head;
         head.next = null;
         return reversedListHead;
     }
 
-    static void printList(Node head) {
-        Node curr = head;
-        System.out.print("[ ");
+    // 1 -> 2 -> 3 -> 4 -> 5
+    // 1 -> 4 -> 3 -> 2 -> 5
+    static ListNode reversePartialList(ListNode head, ListNode start, ListNode end) {
+        if (head == null) {
+            return null;
+        }
+        ListNode fake = new ListNode(0);
+        fake.next = head;
+        // Find partial list's previous node
+        ListNode startPrev = fake;
+        while (startPrev.next != null && startPrev.next != start) {
+            startPrev = startPrev.next;
+        }
+        // Find partial list's next node
+        ListNode endNext = end.next;
+        // Reverse the partial sublist
+        ListNode prev = endNext, curr = start;
+        while (curr != endNext) {
+            var tempNext = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = tempNext;
+        }
+        // Reconnect
+        startPrev.next = prev;
+        return fake.next;
+    }
+
+    private static void printList(ListNode head) {
+        var sb = new StringBuilder();
+        sb.append("[ ");
+        var curr = head;
         while (curr != null) {
-            System.out.print(curr);
+            sb.append(curr.val).append(" ");
             curr = curr.next;
         }
-        System.out.println("]");
+        sb.append("]");
+        System.out.println(sb);
     }
 
     public static void main(String[] args) {
-        Node head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
-        printList(head);
-        head = reverseList(head);
-        printList(head);
+        var head1 = new ListNode(1);
+        head1.next = new ListNode(2);
+        head1.next.next = new ListNode(3);
+        head1.next.next.next = new ListNode(4);
+        head1.next.next.next.next = new ListNode(5);
+        printList(head1);
+        // head1 = reverseList(head1);
+        // printList(head1);
+
+        var partialHead1 = reversePartialList(head1, head1.next, head1.next.next.next);
+        printList(partialHead1);
     }
 
 }
