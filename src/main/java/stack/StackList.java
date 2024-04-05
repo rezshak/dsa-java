@@ -12,31 +12,31 @@ public class StackList {
         }
     }
 
-    private Node tail;
+    private Node top;
     private int count;
 
     public StackList() {
-        tail = null;
+        top = null;
         count = 0;
     }
 
     public void push(int item) {
         Node node = new Node(item);
-        node.prev = tail;
-        tail = node;
+        node.prev = top;
+        top = node;
         count++;
     }
 
     public int pop() {
         checkIfEmpty();
-        int item = tail.item;
-        tail = tail.prev;
+        int item = top.item;
+        top = top.prev;
         return item;
     }
 
     public int peek() {
         checkIfEmpty();
-        return tail.item;
+        return top.item;
     }
 
     public int size() {
@@ -51,7 +51,7 @@ public class StackList {
     public String toString() {
         var sb = new StringBuilder();
         sb.append("[ ");
-        Node curr = tail;
+        Node curr = top;
         while (curr != null) {
             sb.append(curr.item).append(" ");
             curr = curr.prev;
