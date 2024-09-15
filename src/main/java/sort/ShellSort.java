@@ -4,17 +4,16 @@ import java.util.Arrays;
 
 public class ShellSort {
 
-    // Rearrange elements at each len/2, len/4, len/8, ... intervals
-    void shellSort(int[] A) {
-        int len = A.length;
-        for (int interval = len / 2; interval > 0; interval /= 2) {
-            for (int i = interval; i < len; i += 1) {
-                int temp = A[i];
+    void shellSort(int[] arr) {
+        int n = arr.length;
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int temp = arr[i];
                 int j;
-                for (j = i; j >= interval && A[j - interval] > temp; j -= interval) {
-                    A[j] = A[j - interval];
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                    arr[j] = arr[j - gap];
                 }
-                A[j] = temp;
+                arr[j] = temp;
             }
         }
     }
