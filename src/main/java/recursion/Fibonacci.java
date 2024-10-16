@@ -48,10 +48,18 @@ class Fibonacci {
 
     // Time: Ω(n), Θ(n), O(n); Space: O(n)
     int fibonacciRecursiveDynamic(int n) {
-        Map<Integer, Integer> cache = new HashMap<>();
-        if (n == 0 || n == 1) return n;
-        cache.put(n, fibonacciRecursiveDynamic(n - 2) + fibonacciRecursiveDynamic(n - 1));
-        return cache.get(n);
+        var memo = new HashMap<Integer, Integer>();
+        memo.put(0, 0);
+        memo.put(1, 1);
+        return helper(n, memo);
+    }
+
+    private int helper(int n, Map<Integer, Integer> memo) {
+        if (memo.containsKey(n)) {
+            return memo.get(n);
+        }
+        memo.put(n, helper(n - 1, memo) + helper(n - 2, memo));
+        return memo.get(n);
     }
 
     // Time: Ω(n), Θ(n), O(n); Space: O(n)
